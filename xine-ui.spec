@@ -15,6 +15,7 @@ Group(pl):	X11/Aplikacje/Multimedia
 Source0:	http://xine.sourceforge.net/files/%{name}-%{version}.tar.gz
 Source1:	xine.desktop
 Source2:	xine_logo.png
+Patch0:		%{name}-DESTDIR.patch
 URL:		http://xine.sourceforge.net
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -82,6 +83,7 @@ Odtwarzacz filmów u¿ywaj±cy biblioteki Ascii Art.
 
 %prep
 %setup -q -n xine-ui-%{version}
+%patch0 -p1
 
 %build
 aclocal
