@@ -2,7 +2,7 @@
 # --without	aa
 # --without	lirc
 
-Summary:	A Free Video Player.
+Summary:	A Free Video Player
 Summary(pl):	Odtwarzacz video
 Summary(ko):	공개 동영상 플레이어
 Name:		xine-ui
@@ -62,7 +62,7 @@ xine 는 GPL라이선스를 따르는 UNIX용 공개 동영상 플레이어입니다. 이
 
 
 %package aa
-Summary:	XINE - Ascii Art player.
+Summary:	XINE - Ascii Art player
 Group:		Applications/Graphics
 Group(de):	Applikationen/Grafik
 Group(pl):	Aplikacje/Grafika
@@ -71,7 +71,6 @@ Requires:	xine-lib-aa >= %{version}
 
 %description aa
 Video player using Ascii Art library.
-
 
 %prep
 %setup -q -n xine-ui-%{version}
@@ -82,7 +81,6 @@ autoconf
 automake -a -c
 autoheader
 %configure \
-	--prefix=%{_prefix} \
 	--disable-orbit \
 %{?_without_lirc:	--disable-lirc} \
 %{!?_without_lirc:	--enable-lirc}
@@ -91,18 +89,17 @@ autoheader
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 install -d $RPM_BUILD_ROOT/{%{_applnkdir}/Multimedia,%{_datadir}/xine/skins}
 
-%{__make} DESTDIR=$RPM_BUILD_ROOT \
-          docdir=$RPM_BUILD_ROOT/%{_datadir}/doc/xine \
-	  install
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT \
+	docdir=$RPM_BUILD_ROOT%{_datadir}/doc/xine
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Multimedia/xine.desktop
-install %{SOURCE2} $RPM_BUILD_ROOT/%{_datadir}/xine/skins
+install %{SOURCE2} $RPM_BUILD_ROOT%{_datadir}/xine/skins
 
-%{!?_without_aa:install -d $RPM_BUILD_ROOT/%{_abindir}}
-%{!?_without_aa:install $RPM_BUILD_ROOT/%{_bindir}/aaxine $RPM_BUILD_ROOT/%{_abindir}}
+%{!?_without_aa:install -d $RPM_BUILD_ROOT%{_abindir}}
+%{!?_without_aa:install $RPM_BUILD_ROOT%{_bindir}/aaxine $RPM_BUILD_ROOT%{_abindir}}
 
 gzip -9nf doc/{FAQ,README}* ChangeLog
 
@@ -111,23 +108,16 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-# binaries
-%attr(755,root,root) %{_bindir}/xine
-%{_datadir}/idl/xine.idl
-# skins
-%{_datadir}/xine/skins/*.png
-%{_datadir}/xine/skins/metal/*
-%{_datadir}/xine/skins/pitt/*
-%{_datadir}/xine/skins/xinetic/*
-%{_datadir}/xine/skins/lcd/*
-# documentation
 %doc doc/{README,README.{dxr3,divx4,syncfb,xinerc},FAQ}.gz *.gz
 %lang(pl) %doc doc/{README,README.dxr3,FAQ}_pl.gz
 %lang(it) %doc doc/{README,FAQ}_it.gz
 %lang(es) %doc doc/{README,FAQ}_es.gz
 %lang(fr) %doc doc/FAQ_fr.gz
-%{_mandir}/fr/man1/xine.1*
+%attr(755,root,root) %{_bindir}/xine
+%{_datadir}/idl/xine.idl
+%{_datadir}/xine/skins
 %{_mandir}/man1/xine.1*
+%lang(fr) %{_mandir}/fr/man1/xine.1*
 %{_applnkdir}/Multimedia/xine.desktop
 
 %{!?_without_aa:%files aa}
