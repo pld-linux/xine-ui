@@ -13,12 +13,12 @@ Summary(pl):	Odtwarzacz video
 Summary(pt_BR):	Xine, um player de video
 Summary(zh_CN):	一个免费的视频播放器(界面)
 Name:		xine-ui
-Version:	0.9.21
+Version:	0.9.22
 Release:	1
 License:	GPL
 Group:		X11/Applications/Multimedia
 Source0:	http://dl.sourceforge.net/xine/%{name}-%{version}.tar.gz
-# Source0-md5:	18baa9fbef7a87d4094e46b02f85d46a
+# Source0-md5:	2a59480b11cb136862cafcbc56d3922e
 Source1:	xine.desktop
 Source2:	xine.png
 Source3:	xine_logo.png
@@ -156,14 +156,15 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc doc/{FAQ_en,README_en,README.*,bug_report_form} ChangeLog
-%lang(de) %doc doc/{README,FAQ}_de
-%lang(es) %doc doc/{README,FAQ}_es
+%doc doc/{README_en,README.*} ChangeLog
+%lang(cs) %doc doc/README_cs
+%lang(de) %doc doc/README_de
+%lang(es) %doc doc/README_es
 %lang(fi) %doc doc/README_fi
-%lang(fr) %doc doc/{README,FAQ}_fr
-%lang(it) %doc doc/{README,FAQ}_it
-%lang(pl) %doc doc/{README,README.dxr3,FAQ}_pl
-%lang(uk) %doc doc/{README,FAQ}_uk
+%lang(fr) %doc doc/README_fr
+%lang(it) %doc doc/README_it
+%lang(pl) %doc doc/README_pl
+%lang(uk) %doc doc/README_uk
 #%attr(755,root,root) %{_bindir}/fbxine		(doesn't work for me)
 %attr(755,root,root) %{_bindir}/xine
 %attr(755,root,root) %{_bindir}/xine-bugreport
@@ -171,6 +172,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/xine-remote
 %{_datadir}/xine/skins
 %{_datadir}/xine/desktop
+%{_datadir}/xine/visuals
 %{_mandir}/man1/*.1*
 %lang(de) %{_mandir}/de/man1/*.1*
 %lang(es) %{_mandir}/es/man1/*.1*
