@@ -16,7 +16,7 @@ Summary(pl):	Odtwarzacz video
 Summary(pt_BR):	Xine, um player de video
 Summary(zh_CN):	一个免费的视频播放器(界面)
 Name:		xine-ui
-Version:	0.9.13
+Version:	0.9.18
 Release:	1
 License:	GPL
 Group:		X11/Applications/Multimedia
@@ -28,6 +28,7 @@ Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-dfb.patch
 Patch2:		%{name}-ac_am.patch
 Patch3:		%{name}-no_corba.patch
+Patch4:		%{name}-ncurses.patch
 URL:		http://xine.sourceforge.net
 %{?_with_directfb:BuildRequires:	DirectFB-devel}
 %{!?_without_aa:BuildRequires:		aalib-devel}
@@ -46,9 +47,7 @@ Requires:	xine-plugin-audio
 Obsoletes:	xine
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_prefix		/usr/X11R6
 %define		_mandir		%{_prefix}/man
-%define		_abindir	/usr/bin
 
 %description
 xine is a free gpl-licensed video player for unix-like systems. We
@@ -121,13 +120,14 @@ Odtwarzacz film體 u縴waj眂y biblioteki DirectFB.
 %prep
 %setup -q -n xine-ui-%{version}
 #%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+#%patch1 -p1
+#%patch2 -p1
+#%patch3 -p1
+%patch4
 
 %build
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I m4
 %{__autoconf}
 %{__automake}
 %{__autoheader}
@@ -150,11 +150,6 @@ install -d $RPM_BUILD_ROOT{%{_applnkdir}/Multimedia,%{_pixmapsdir},%{_datadir}/x
 install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Multimedia/xine.desktop
 install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 install %{SOURCE3} $RPM_BUILD_ROOT%{_datadir}/xine/skins
-
-%{!?_without_aa:install -d $RPM_BUILD_ROOT%{_abindir}}
-%{!?_without_aa:install $RPM_BUILD_ROOT%{_bindir}/aaxine $RPM_BUILD_ROOT%{_abindir}}
-%{?_with_directfb:install -d $RPM_BUILD_ROOT%{_abindir}}
-%{?_with_directfb:install $RPM_BUILD_ROOT%{_bindir}/dfbxine $RPM_BUILD_ROOT%{_abindir}}
 
 mv $RPM_BUILD_ROOT%{_datadir}/locale/{pl_PL,pl}
 
@@ -194,8 +189,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %{!?_without_aa:%files aa}
 %{!?_without_aa:%defattr(644,root,root,755)}
-%{!?_without_aa:%attr(755,root,root) %{_abindir}/aaxine}
+%{!?_without_aa:%attr(755,root,root) %{_bindir}/aaxine}
 
 %{?_with_directfb:%files dfb}
 %{?_with_directfb:%defattr(644,root,root,755)}
-%{?_with_directfb:%attr(755,root,root) %{_abindir}/dfbxine}
+%{?_with_directfb:%attr(755,root,root) %{_bindir}/dfbxine}
