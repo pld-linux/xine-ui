@@ -2,9 +2,10 @@
 Name=xine player
 Name[pl]=Odtwarzacz xine
 Comment=Movie player
-Comment[pl]=Odtwarzacz filmów
+Comment[pl]=Odtwarzacz filmÃ³w
 Icon=
 Exec=xine
 Terminal=0
 Type=Application
 
+# vi: encoding=utf-8
