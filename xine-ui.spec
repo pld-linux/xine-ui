@@ -180,7 +180,7 @@ rm -rf $RPM_BUILD_ROOT
 %lang(pl) %{_mandir}/pl/man1/xine*.1*
 %{_applnkdir}/Multimedia/xine.desktop
 %{_pixmapsdir}/*
-# CORBA files 
+# CORBA files
 #%%{_datadir}/idl/xine.idl
 #%attr(755,root,root) %{_bindir}/xine-remote
 
