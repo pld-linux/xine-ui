@@ -1,6 +1,6 @@
 #
 # Conditional build:
-# _without_aa		- without aaxine UI
+# _without_aalib	- without aaxine UI
 # _without_lirc		- without lirc support
 # _with_directfb	- with dfbxine UI (doesn't work now)
 #
@@ -28,7 +28,7 @@ Patch2:		%{name}-opt.patch
 Patch3:		%{name}-system-readline.patch
 URL:		http://xine.sourceforge.net/
 %{?_with_directfb:BuildRequires:	DirectFB-devel >= 0.9.10}
-%{!?_without_aa:BuildRequires:		aalib-devel >= 1.2.0}
+%{!?_without_aalib:BuildRequires:	aalib-devel >= 1.2.0}
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
 BuildRequires:	bison
@@ -165,7 +165,7 @@ rm -rf $RPM_BUILD_ROOT
 %lang(it) %doc doc/README_it
 %lang(pl) %doc doc/README_pl
 %lang(uk) %doc doc/README_uk
-#%attr(755,root,root) %{_bindir}/fbxine		(doesn't work for me)
+%attr(755,root,root) %{_bindir}/fbxine
 %attr(755,root,root) %{_bindir}/xine
 %attr(755,root,root) %{_bindir}/xine-bugreport
 %attr(755,root,root) %{_bindir}/xine-check
@@ -173,21 +173,28 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/xine/skins
 %{_datadir}/xine/desktop
 %{_datadir}/xine/visuals
-%{_mandir}/man1/*.1*
-%lang(de) %{_mandir}/de/man1/*.1*
-%lang(es) %{_mandir}/es/man1/*.1*
-%lang(fr) %{_mandir}/fr/man1/*.1*
-%lang(pl) %{_mandir}/pl/man1/*.1*
+%{_mandir}/man1/xine*.1*
+%lang(de) %{_mandir}/de/man1/xine*.1*
+%lang(es) %{_mandir}/es/man1/xine*.1*
+%lang(fr) %{_mandir}/fr/man1/xine*.1*
+%lang(pl) %{_mandir}/pl/man1/xine*.1*
 %{_applnkdir}/Multimedia/xine.desktop
 %{_pixmapsdir}/*
 # CORBA files 
 #%%{_datadir}/idl/xine.idl
 #%attr(755,root,root) %{_bindir}/xine-remote
 
-%{!?_without_aa:%files aa}
-%{!?_without_aa:%defattr(644,root,root,755)}
-%{!?_without_aa:%attr(755,root,root) %{_bindir}/aaxine}
+%if 0%{!?_without_aalib:1}
+%files aa
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/aaxine
+%{_mandir}/man1/aaxine.1*
+%lang(de) %{_mandir}/de/man1/aaxine.1*
+%lang(pl) %{_mandir}/pl/man1/aaxine.1*
+%endif
 
-%{?_with_directfb:%files dfb}
-%{?_with_directfb:%defattr(644,root,root,755)}
-%{?_with_directfb:%attr(755,root,root) %{_bindir}/dfbxine}
+%if 0%{?_with_directfb:1}
+%files dfb
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/dfbxine
+%endif
