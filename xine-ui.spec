@@ -126,10 +126,10 @@ Odtwarzacz filmów u¿ywaj±cy biblioteki DirectFB.
 
 %build
 %{__libtoolize}
-aclocal
+%{__aclocal}
 %{__autoconf}
 %{__automake}
-autoheader
+%{__autoheader}
 %configure \
 	--disable-orbit \
 	--disable-corba \
