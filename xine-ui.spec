@@ -13,7 +13,7 @@ Summary(pl):	Odtwarzacz video
 Summary(pt_BR):	Xine, um player de video
 Summary(zh_CN):	一个免费的视频播放器(界面)
 Name:		xine-ui
-Version:	0.9.19
+Version:	0.9.21
 Release:	1
 License:	GPL
 Group:		X11/Applications/Multimedia
@@ -113,7 +113,7 @@ Odtwarzacz film體 u縴waj眂y biblioteki DirectFB.
 %setup -q
 %patch0 -p0
 %patch1 -p1
-%patch2 -p1
+#%patch2 -p1
 
 %build
 %{__libtoolize}
