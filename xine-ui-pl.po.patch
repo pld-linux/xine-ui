@@ -1,0 +1,191 @@
+--- xine-ui-0.9.23/po/pl_PL.po.orig	2003-12-24 15:21:58.000000000 +0100
++++ xine-ui-0.9.23/po/pl_PL.po	2003-12-31 14:05:47.470189560 +0100
+@@ -1,17 +1,15 @@
+-# translation of pl_PL.po to Polski
+-# translation of pl_PL.po to Polish
+-# Polish xine-ui translation file.
+-# Copyright (C) 2002,2003 Free Software Foundation, Inc.
++# Polish translation for xine-ui.
++# Copyright (C) 2002, 2003 Free Software Foundation, Inc.
+ # Bart³omiej Muryn <_4ever_@irc.pl>, 2002,2003.
+ # Bart³omiej Muryn <4ever@irc.pl>, 2003.
+ #
+ msgid ""
+ msgstr ""
+-"Project-Id-Version: pl_PL\n"
++"Project-Id-Version: xine-ui 0.9.23\n"
+ "POT-Creation-Date: 2003-12-24 15:16+0100\n"
+ "PO-Revision-Date: 2003-12-24 14:09+0100\n"
+ "Last-Translator: Bart³omiej Muryn <4ever@irc.pl>\n"
+-"Language-Team: Polski <pl@li.org>\n"
++"Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=ISO-8859-2\n"
+ "Content-Transfer-Encoding: 8bit\n"
+@@ -235,7 +233,7 @@
+ 
+ #: src/xitk/control.c:776
+ msgid "Close control window"
+-msgstr "Zamkniêcie panela kontrolnego"
++msgstr "Zamkniêcie panelu kontrolnego"
+ 
+ #: src/xitk/download.c:48
+ msgid "Download in progress"
+@@ -477,11 +475,11 @@
+ 
+ #: src/xitk/event.c:1216
+ msgid "Hide video output window if there is no video in the stream"
+-msgstr "Ukryj okno wy¶witlania obrazu je¶li strumieñ nie zawiera obrazu"
++msgstr "Ukryj okno wy¶wietlania obrazu je¶li strumieñ nie zawiera obrazu"
+ 
+ #: src/xitk/event.c:1223
+ msgid "Visiblility behavior of panel"
+-msgstr "Zachowanie panela"
++msgstr "Zachowanie panelu"
+ 
+ #: src/xitk/event.c:1224
+ msgid ""
+@@ -542,7 +540,7 @@
+ #: src/xitk/event.c:1286
+ msgid "Use unscaled (full screen resolution) OSD if possible"
+ msgstr ""
+-"Je¶li mo¿liwe, u¿ycie nieskalowanego (rozdzielczo¶æ pe³no-ekranowa) OSD."
++"Je¶li mo¿liwe, u¿ycie nieskalowanego (rozdzielczo¶æ pe³noekranowa) OSD."
+ 
+ #: src/xitk/event.c:1294
+ msgid "Dismiss OSD time (s)"
+@@ -1085,7 +1083,7 @@
+ 
+ #: src/xitk/main.c:615
+ msgid "  -L, --no-lirc                Turn off LIRC support.\n"
+-msgstr "  -L, --no-lirc                wy³±czenie wsparcia dla LIRC'a\n"
++msgstr "  -L, --no-lirc                wy³±czenie wsparcia dla LIRC-a\n"
+ 
+ #: src/xitk/main.c:617
+ msgid ""
+@@ -1170,7 +1168,7 @@
+ "  -l, --loop [=mode]           Ustaw tryb powtarzania listy odtwarzania "
+ "(domy¶lnie: loop). Tryby:\n"
+ "                                 'loop': powtarza ca³± listê odtwarzania.\n"
+-"                                 'repeat': powtarza bierz±c± pozycjê z "
++"                                 'repeat': powtarza bie¿±c± pozycjê z "
+ "listy.\n"
+ "                                 'shuffle': wybiera z listy losowo "
+ "nieodtwarzane jeszcze pozycje\n"
+@@ -1185,7 +1183,7 @@
+ msgid ""
+ "      --enqueue <mrl> ...      Enqueue mrl of a running session (session 0)\n"
+ msgstr ""
+-"       --enqueue <mrl> ...      Kolejkuj MRL w bierz±cej sesji (sesja 0)\n"
++"       --enqueue <mrl> ...      Kolejkuj MRL w bie¿±cej sesji (sesja 0)\n"
+ 
+ #: src/xitk/main.c:640
+ msgid ""
+@@ -1334,7 +1332,7 @@
+ #: src/xitk/main.c:680
+ msgid "  -T, --tvout <backend>        Turn on tvout support. Backend can be:\n"
+ msgstr ""
+-"  -T, --tvout <backend>        W±cz wsparcie dla wyj¶cia TV. <backend> mo¿e "
++"  -T, --tvout <backend>        W³±cz wsparcie dla wyj¶cia TV. <backend> mo¿e "
+ "byæ:\n"
+ 
+ #: src/xitk/main.c:690
+@@ -1345,7 +1343,7 @@
+ "                    audio_decoder, video_decoder.\n"
+ msgstr ""
+ "      --list-plugins [=type]   Wy¶wietl wszystkie dostêpne wtyczki,\n"
+-"                               Ocjonalnie <type> mo¿e byæ:\n"
++"                               Opcjonalnie <type> mo¿e byæ:\n"
+ "                    audio_out, video_out, demux, input, sub, post,\n"
+ "                    audio_decoder, video_decoder.\n"
+ 
+@@ -1423,7 +1421,7 @@
+ 
+ #: src/xitk/main.c:898 src/xitk/main.c:946
+ msgid "main: not using any audio driver (as requested).\n"
+-msgstr "main: nie u¿ywam ¿adnego sterownika d¼wiêku (tak jak rz±dano)\n"
++msgstr "main: nie u¿ywam ¿adnego sterownika d¼wiêku (tak jak ¿±dano)\n"
+ 
+ #: src/xitk/main.c:919
+ #, c-format
+@@ -1542,7 +1540,7 @@
+ #: src/xitk/main.c:1492
+ #, c-format
+ msgid "Bad aspect ratio mode '%s', see xine --help\n"
+-msgstr "B³êdne proporcjie ekranu '%s', Zobacz xine --help\n"
++msgstr "B³êdne proporcje ekranu '%s', Zobacz xine --help\n"
+ 
+ #: src/xitk/main.c:1556
+ #, c-format
+@@ -1603,7 +1601,7 @@
+ "Deinterlace plugin will be enabled on startup. Progressive streams are "
+ "automaticaly detected with no performance penalty."
+ msgstr ""
+-"Wtyczka koretky przeplotu zostanie w³±czona przy starcie. Strumienie "
++"Wtyczka korekty przeplotu zostanie w³±czona przy starcie. Strumienie "
+ "progresywne s± wykrywane automatycznie bez ¿adnego wp³ywu na wydajno¶æ."
+ 
+ #: src/xitk/main.c:2005
+@@ -2077,7 +2075,7 @@
+ 
+ #: src/xitk/panel.c:48
+ msgid "Play next chapter or mrl"
+-msgstr "Odtwarzanie nastepnego wpisu z listy"
++msgstr "Odtwarzanie nastêpnego wpisu z listy"
+ 
+ #: src/xitk/panel.c:51
+ msgid "Play previous entry from playlist"
+@@ -2085,7 +2083,7 @@
+ 
+ #: src/xitk/panel.c:52
+ msgid "Play next entry from playlist"
+-msgstr "Odtwarzanie nastepnego wpisu z listy"
++msgstr "Odtwarzanie nastêpnego wpisu z listy"
+ 
+ #: src/xitk/panel.c:271
+ #, c-format
+@@ -2207,7 +2205,7 @@
+ 
+ #: src/xitk/panel.c:1395
+ msgid "gui panel visibility"
+-msgstr "wy¶wietlanie panela gui"
++msgstr "wy¶wietlanie panelu gui"
+ 
+ #: src/xitk/playlist.c:394 src/xitk/playlist.c:1173 src/xitk/skins.c:1184
+ msgid "Load"
+@@ -2251,7 +2249,7 @@
+ 
+ #: src/xitk/playlist.c:1169
+ msgid "Add one or more entries in playlist"
+-msgstr "Dodanie jednego lub wiecej wpisów do listy"
++msgstr "Dodanie jednego lub wiêcej wpisów do listy"
+ 
+ #: src/xitk/playlist.c:1179
+ msgid "Load saved playlist"
+@@ -2280,7 +2278,7 @@
+ #: src/xitk/post.c:225
+ msgid "Post audio plugin to used when playing streams without video"
+ msgstr ""
+-"Wtyczka d¼wieku post-przetwarzania do u¿ycia ze strumieniami bez obrazu."
++"Wtyczka d¼wiêku post-przetwarzania do u¿ycia ze strumieniami bez obrazu."
+ 
+ #: src/xitk/post.c:539
+ #, c-format
+@@ -2395,7 +2393,7 @@
+ #: src/xitk/skins.c:308
+ #, c-format
+ msgid "Failed to load %s, wrong version. Load fallback skin '%s'.\n"
+-msgstr "Nie uda³o siê za³adowaæ %s, b³edna wersja. Powrót do skóry '%s'.\n"
++msgstr "Nie uda³o siê za³adowaæ %s, b³êdna wersja. Powrót do skóry '%s'.\n"
+ 
+ #: src/xitk/skins.c:361
+ #, c-format
+@@ -2796,7 +2794,7 @@
+ #: src/xitk/videowin.c:1504
+ #, c-format
+ msgid "XF86VidMode Extension (%d.%d) detected, trying to use it.\n"
+-msgstr "Zanleziono rozszerzenie XF86VidMode (%d.%d), próba u¿ycia.\n"
++msgstr "Znaleziono rozszerzenie XF86VidMode (%d.%d), próba u¿ycia.\n"
+ 
+ #: src/xitk/videowin.c:1509
+ #, c-format
