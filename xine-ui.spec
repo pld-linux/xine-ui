@@ -83,7 +83,7 @@ Summary:	XINE - Ascii Art player
 Summary(pl):	XINE - odtwarzacz Ascii Art
 Summary(pt_BR):	XINE - Player em Ascii Art (aalib)
 Group:		Applications/Multimedia
-Requires:	xine-lib-aa >= %{version}
+Requires:	xine-output-video-aa >= %{version}
 Requires:	xine-plugin-audio
 
 %description aa
