@@ -7,7 +7,7 @@ Summary(pl):	Odtwarzacz video
 Summary(ko):	공개 동영상 플레이어
 Name:		xine-ui
 Version:	0.9.4
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Multimedia
 Group(de):	X11/Applikationen/Multimedia
@@ -15,6 +15,7 @@ Group(pl):	X11/Aplikacje/Multimedia
 Source0:	http://xine.sourceforge.net/files/%{name}-%{version}.tar.gz
 Source1:	xine.desktop
 Source2:	xine_logo.png
+Patch0:		%{name}-skins-makefile.patch
 URL:		http://xine.sourceforge.net
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -74,6 +75,7 @@ Video player using Ascii Art library.
 
 %prep
 %setup -q -n xine-ui-%{version}
+%patch0 -p1
 
 %build
 aclocal
