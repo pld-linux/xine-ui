@@ -1,43 +1,47 @@
 #
 # Conditional build:
-# _without_aalib	- without aaxine UI
-# _without_lirc		- without lirc support
-# _with_directfb	- with dfbxine UI (doesn't work now)
+%bcond_without	aalib		# without aaxine UI
+%bcond_without	lirc		# without lirc support
+%bcond_with	directfb	# with dfbxine UI [disabled in sources at the moment]
 #
+%define	xine_ver 1:1.0
 Summary:	A Free Video Player
 Summary(ko):	°ø°³ µ¿¿µ»ó ÇÃ·¹ÀÌ¾î
 Summary(pl):	Odtwarzacz video
 Summary(pt_BR):	Xine, um player de video
 Summary(zh_CN):	Ò»¸öÃâ·ÑµÄÊÓÆµ²¥·ÅÆ÷(½çÃæ)
 Name:		xine-ui
-Version:	0.9.22
+Version:	0.9.23
 Release:	1
 License:	GPL
 Group:		X11/Applications/Multimedia
 Source0:	http://dl.sourceforge.net/xine/%{name}-%{version}.tar.gz
-# Source0-md5:	2a59480b11cb136862cafcbc56d3922e
+# Source0-md5:	526c96a7c08d2913e6f328e347fe615f
 Source1:	xine.desktop
 Source2:	xine.png
 Source3:	xine_logo.png
 Patch0:		%{name}-ncurses.patch
 Patch1:		%{name}-nolibs.patch
-Patch2:		%{name}-opt.patch
+Patch2:		%{name}-am18.patch
 Patch3:		%{name}-system-readline.patch
+Patch4:		%{name}-pl.po.patch
 URL:		http://xine.sourceforge.net/
-%{?_with_directfb:BuildRequires:	DirectFB-devel >= 0.9.10}
-%{!?_without_aalib:BuildRequires:	aalib-devel >= 1.2.0}
+%{?with_directfb:BuildRequires:	DirectFB-devel >= 0.9.10}
+%{?with_aalib:BuildRequires:	aalib-devel >= 1.2.0}
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
 BuildRequires:	bison
 BuildRequires:	gettext-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libtool
-%{!?_without_lirc:BuildRequires:	lirc-devel}
+%{?with_lirc:BuildRequires:	lirc-devel}
 BuildRequires:	ncurses-devel
+#BuildRequires:	nvtv-devel >= 0.4.6	# not released yet
 BuildRequires:	pkgconfig
 BuildRequires:	readline-devel >= 4.2a
-BuildRequires:	xine-lib-devel >= %{version}
-Requires:	xine-plugin-audio
+BuildRequires:	xine-lib-devel >= %{xine_ver}
+Requires:	xine-lib >= %{xine_ver}
+Requires:	xine-plugin-audio >= %{xine_ver}
 Obsoletes:	xine
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -84,8 +88,9 @@ Summary:	XINE - Ascii Art player
 Summary(pl):	XINE - odtwarzacz Ascii Art
 Summary(pt_BR):	XINE - Player em Ascii Art (aalib)
 Group:		Applications/Multimedia
-Requires:	xine-output-video-aa >= %{version}
-Requires:	xine-plugin-audio
+Requires:	xine-lib >= %{xine_ver}
+Requires:	xine-output-video-aa >= %{xine_ver}
+Requires:	xine-plugin-audio >= %{xine_ver}
 
 %description aa
 Video player using Ascii Art library.
@@ -100,8 +105,9 @@ Interface para o xine utilizando aalib (Ascii Art Library).
 Summary:	XINE - player for DirectFB
 Summary(pl):	XINE - odtwarzacz dla DirectFB
 Group:		Applications/Multimedia
-Requires:	xine-lib-directfb >= %{version}
-Requires:	xine-plugin-audio
+Requires:	xine-lib >= %{xine_ver}
+Requires:	xine-output-video-directfb >= %{xine_ver}
+Requires:	xine-plugin-audio >= %{xine_ver}
 
 %description dfb
 Video player using DirectFB library.
@@ -115,6 +121,7 @@ Odtwarzacz filmów u¿ywaj±cy biblioteki DirectFB.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 %{__libtoolize}
@@ -125,8 +132,8 @@ Odtwarzacz filmów u¿ywaj±cy biblioteki DirectFB.
 %configure \
 	--disable-orbit \
 	--disable-corba \
-%{?_without_lirc:	--disable-lirc} \
-%{!?_without_lirc:	--enable-lirc}
+%{!?with_lirc:	--disable-lirc} \
+%{?with_lirc:	--enable-lirc}
 
 %{__make}
 
@@ -181,7 +188,7 @@ rm -rf $RPM_BUILD_ROOT
 #%%{_datadir}/idl/xine.idl
 #%attr(755,root,root) %{_bindir}/xine-remote
 
-%if 0%{!?_without_aalib:1}
+%if %{with aalib}
 %files aa
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/aaxine
@@ -190,7 +197,7 @@ rm -rf $RPM_BUILD_ROOT
 %lang(pl) %{_mandir}/pl/man1/aaxine.1*
 %endif
 
-%if 0%{?_with_directfb:1}
+%if %{with directfb}
 %files dfb
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/dfbxine
