@@ -33,7 +33,7 @@ URL:		http://xine.sourceforge.net/
 %{?with_directfb:BuildRequires:	DirectFB-devel >= 0.9.10}
 %{?with_aalib:BuildRequires:	aalib-devel >= 1.2.0}
 BuildRequires:	autoconf >= 2.53
-BuildRequires:	automake >= 1.8.1
+BuildRequires:	automake >= 1:1.8.1
 BuildRequires:	bison
 BuildRequires:	curl-devel >= 7.10.2
 BuildRequires:	gettext-devel
