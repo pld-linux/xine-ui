@@ -84,7 +84,7 @@ Odtwarzacz filmów u¿ywaj±cy biblioteki Ascii Art.
 %build
 aclocal
 autoconf
-automake -a -c
+automake -a -c -f
 autoheader
 %configure \
 	--disable-orbit \
