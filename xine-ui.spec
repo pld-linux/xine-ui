@@ -6,8 +6,8 @@ Summary:	A Free Video Player
 Summary(pl):	Odtwarzacz video
 Summary(ko):	공개 동영상 플레이어
 Name:		xine-ui
-Version:	0.9.7
-Release:	2
+Version:	0.9.8
+Release:	1
 License:	GPL
 Group:		X11/Applications/Multimedia
 Group(de):	X11/Applikationen/Multimedia
