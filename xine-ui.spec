@@ -8,7 +8,7 @@ Summary(ko):	공개 동영상 플레이어
 Summary(pl):	Odtwarzacz video
 Summary(pt_BR):	Xine, um player de video
 Name:		xine-ui
-Version:	0.9.11
+Version:	0.9.12
 Release:	0.1
 License:	GPL
 Group:		X11/Applications/Multimedia
