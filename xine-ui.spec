@@ -23,7 +23,6 @@ Source2:	xine.png
 Source3:	xine_logo.png
 Patch0:		%{name}-ncurses.patch
 Patch1:		%{name}-nolibs.patch
-Patch2:		%{name}-opt.patch
 URL:		http://xine.sourceforge.net/
 %{?_with_directfb:BuildRequires:	DirectFB-devel >= 0.9.10}
 %{!?_without_aa:BuildRequires:		aalib-devel >= 1.2.0}
@@ -113,7 +112,6 @@ Odtwarzacz filmów u¿ywaj±cy biblioteki DirectFB.
 %setup -q
 %patch0 -p0
 %patch1 -p1
-#%patch2 -p1
 
 %build
 %{__libtoolize}
