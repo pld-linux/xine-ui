@@ -8,8 +8,8 @@ Summary(ko):	°ø°³ µ¿¿µ»ó ÇÃ·¹ÀÌ¾î
 Summary(pl):	Odtwarzacz video
 Summary(pt_BR):	Xine, um player de video
 Name:		xine-ui
-Version:	0.9.10
-Release:	2
+Version:	0.9.11
+Release:	0.1
 License:	GPL
 Group:		X11/Applications/Multimedia
 Source0:	http://xine.sourceforge.net/files/%{name}-%{version}.tar.gz
@@ -108,11 +108,12 @@ Odtwarzacz filmów u¿ywaj±cy biblioteki DirectFB.
 
 %prep
 %setup -q -n xine-ui-%{version}
-%patch0 -p1
+#%patch0 -p1
 %patch1 -p1
 %patch2 -p1
 
 %build
+libtoolize --copy --force
 aclocal
 %{__autoconf}
 %{__automake}
@@ -158,8 +159,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/xine-remote
 %{_datadir}/idl/xine.idl
 %{_datadir}/xine/skins/[^x]*
-%{_datadir}/xine/skins/xinetic
-%{_datadir}/xine/fonts
+#%{_datadir}/xine/skins/xinetic
+#%{_datadir}/xine/fonts
 %{_mandir}/man1/*.1*
 %lang(de) %{_mandir}/de/man1/*.1*
 %lang(fr) %{_mandir}/fr/man1/*.1*
