@@ -16,7 +16,7 @@ Summary(pl):	Odtwarzacz video
 Summary(pt_BR):	Xine, um player de video
 Name:		xine-ui
 Version:	0.9.12
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Multimedia
 Source0:	http://xine.sourceforge.net/files/%{name}-%{version}.tar.gz
@@ -152,6 +152,8 @@ install %{SOURCE3} $RPM_BUILD_ROOT%{_datadir}/xine/skins
 %{?_with_directfb:install -d $RPM_BUILD_ROOT%{_abindir}}
 %{?_with_directfb:install $RPM_BUILD_ROOT%{_bindir}/dfbxine $RPM_BUILD_ROOT%{_abindir}}
 
+mv $RPM_BUILD_ROOT%{_datadir}/locale/pl_PL $RPM_BUILD_ROOT%{_datadir}/locale/pl
+
 %find_lang %{name} --all-name
 
 %clean
@@ -160,12 +162,12 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc doc/{README_en,README.{config_en,divx4,dxr3,mrl,opengl,syncfb,tvmode},FAQ_en} ChangeLog 
-%lang(pl) %doc doc/{README,README.dxr3,FAQ}_pl
-%lang(it) %doc doc/{README,FAQ}_it
-%lang(es) %doc doc/{README,FAQ}_es
-%lang(fr) %doc doc/{README,FAQ}_fr
 %lang(de) %doc doc/{README,FAQ}_de
+%lang(es) %doc doc/{README,FAQ}_es
+%lang(fi) %doc doc/README_fi
+%lang(fr) %doc doc/{README,FAQ}_fr
 %lang(it) %doc doc/{README,FAQ}_it
+%lang(pl) %doc doc/{README,README.dxr3,FAQ}_pl
 %lang(uk) %doc doc/{README,FAQ}_uk
 %attr(755,root,root) %{_bindir}/xine
 %attr(755,root,root) %{_bindir}/xine-bugreport
@@ -173,8 +175,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/xine/skins/*
 %{_mandir}/man1/*.1*
 %lang(de) %{_mandir}/de/man1/*.1*
-%lang(fr) %{_mandir}/fr/man1/*.1*
 %lang(es) %{_mandir}/es/man1/*.1*
+%lang(fr) %{_mandir}/fr/man1/*.1*
 %lang(pl) %{_mandir}/pl/man1/*.1*
 %{_applnkdir}/Multimedia/xine.desktop
 %{_pixmapsdir}/*
