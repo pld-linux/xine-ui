@@ -1,3 +1,5 @@
+# Conditional build:
+# --without	aa
 
 Summary:	A Free Video Player.
 Summary(pl):	Odtwarzacz video
@@ -16,8 +18,8 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
 BuildRequires:	xine-lib-devel >= 0.5.0
-BuildRequires:	aalib-devel
-BuildRequires:	aalib-progs
+%{!?_without_aa:BuildRequires: aalib-devel}
+%{!?_without_aa:BuildRequires: aalib-progs}
 BuildRequires:	ORBit-devel
 BuildRequires:	libpng-devel
 Obsoletes:	xine
@@ -54,16 +56,16 @@ xine ´Â GPL¶óÀÌ¼±½º¸¦ µû¸£´Â UNIX¿ë °ø°³ µ¿¿µ»ó ÇÃ·¹ÀÌ¾îÀÔ´Ï´Ù. ÀÌ
 ³ªÁß¿¡´Â mpeg-4 ¿Í ´Ù¸¥ Çü½ÄÀÇ µ¿¿µ»óµµ Áö¿øÇÒ ¿¹Á¤ÀÔ´Ï´Ù.
 
 
-%package aa
-Summary:	XINE - Ascii Art player.
-Group:		Applications/Graphics
-Group(de):	Applikationen/Grafik
-Group(pl):	Aplikacje/Grafika
-Group(pt):	Aplicações/Gráficos
-Requires:	xine-lib-aa
+%{!?_without_aa:%package aa}
+%{!?_without_aa:Summary:	XINE - Ascii Art player.}
+%{!?_without_aa:Group:		Applications/Graphics}
+%{!?_without_aa:Group(de):	Applikationen/Grafik}
+%{!?_without_aa:Group(pl):	Aplikacje/Grafika}
+%{!?_without_aa:Group(pt):	Aplicações/Gráficos}
+%{!?_without_aa:Requires:	xine-lib-aa}
 
-%description aa
-Video player using Ascii Art library.
+%{!?_without_aa:%description aa}
+%{!?_without_aa:Video player using Ascii Art library.}
 
 
 %prep
@@ -74,8 +76,8 @@ Video player using Ascii Art library.
 #sed 's/xine_skin_dir=/xine_skin_dir=$RPM_BUILD_ROOT/' configure.orig > ./configure
 
 %configure2_13 \
-	--prefix=%{_prefix} \
-	--disable-xinetest 
+	--prefix=%{_prefix}
+#	--disable-xinetest 
 #	--disable-orbittest
 %{__make}
 
@@ -84,7 +86,9 @@ rm -rf $RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT%{_applnkdir}/Multimedia
 
-%{__make} DESTDIR=$RPM_BUILD_ROOT install
+%{__make} DESTDIR=$RPM_BUILD_ROOT \
+          docdir=$RPM_BUILD_ROOT/%{_datadir}/doc/xine \
+	  install
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Multimedia/xine.desktop
 #cp doc/*.xpm $RPM_BUILD_ROOT/usr/include/X11/pixmaps
@@ -112,6 +116,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/doc/xine/*
 %{_applnkdir}/Multimedia/xine.desktop
 
-%files aa
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/aaxine
+%{!?_without_aa:%files aa}
+%{!?_without_aa:%defattr(644,root,root,755)}
+%{!?_without_aa:%attr(755,root,root) %{_bindir}/aaxine}
