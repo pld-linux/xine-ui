@@ -13,6 +13,7 @@ Group(de):	X11/Applikationen/Multimedia
 Group(pl):	X11/Aplikacje/Multimedia
 Source0:	http://xine.sourceforge.net/files/%{name}-%{version}.tar.gz
 Source1:	xine.desktop
+Source2:	xine_logo.png
 URL:		http://xine.sourceforge.net
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -92,6 +93,7 @@ install -d $RPM_BUILD_ROOT%{_applnkdir}/Multimedia
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Multimedia/xine.desktop
 #cp doc/*.xpm $RPM_BUILD_ROOT/usr/include/X11/pixmaps
+install %{SOURCE2} $RPM_BUILD_ROOT/%{_datadir}/xine/skins
 
 %post
 #/sbin/ldconfig
@@ -107,6 +109,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/idl/xine.idl
 # skins
 %{_datadir}/xine/skins/*/*
+%{_datadir}/xine/skins/*.png
 #/usr/local/share/xine/skins/metal/*
 #/usr/local/share/xine/skins/pitt/*
 #/usr/local/share/xine/skins/xinetic/*
