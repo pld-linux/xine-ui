@@ -8,7 +8,7 @@ Summary(pl):	Odtwarzacz video
 Summary(pt_BR):	Xine, um player de video
 Name:		xine-ui
 Version:	0.9.9
-Release:	0.1
+Release:	0.2
 License:	GPL
 Group:		X11/Applications/Multimedia
 Source0:	http://xine.sourceforge.net/files/%{name}-%{version}.tar.gz
@@ -24,8 +24,6 @@ BuildRequires:	sed
 BuildRequires:	xine-lib-devel >= %{version}
 %{!?_without_aa:BuildRequires:		aalib-devel}
 %{!?_without_aa:BuildRequires:		aalib-progs}
-%{!?_without_aa:BuildRequires:		slang-devel}
-%{!?_without_aa:BuildRequires:		gpm-devel}
 %{!?_without_lirc:BuildRequires:	lirc-devel}
 BuildRequires:	libpng-devel
 BuildRequires:	ncurses-devel
