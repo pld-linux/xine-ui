@@ -35,7 +35,6 @@ diff -urN xine-ui-0.9.4/src/xitk/skins/pitt/Makefile.am xine-ui-0.9.4.new/src/xi
  
  debug:
  install-debug: install
- mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 diff -urN xine-ui-0.9.4/src/xitk/skins/xinetic/Makefile.am xine-ui-0.9.4.new/src/xitk/skins/xinetic/Makefile.am
 --- xine-ui-0.9.4/src/xitk/skins/xinetic/Makefile.am	Tue Nov  6 23:53:01 2001
 +++ xine-ui-0.9.4.new/src/xitk/skins/xinetic/Makefile.am	Wed Nov  7 00:11:22 2001
@@ -45,7 +44,7 @@ diff -urN xine-ui-0.9.4/src/xitk/skins/xinetic/Makefile.am xine-ui-0.9.4.new/src
  	ArrowUp.png ArrowDown.png MainVolumeBg.png MainVolumePad.png MainMute.png \
 -	MainCam.png MainUp.png MainDown.png SkItemBtn.png SkSlidBG.png SkSlidPad.png \
 -	SkArrowUp.png SkArrowDown.png skinconfig
-+	MainCam.png MainUp.png MainDown.png skinconfig
++	MainCam.png MainUp.png MainDown.png skinconfig SkArrowUp.png SkArrowDown.png
  
  debug:
  install-debug: install
