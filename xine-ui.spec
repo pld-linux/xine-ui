@@ -97,8 +97,8 @@ Interface para o xine utilizando aalib (Ascii Art Library).
 
 %build
 aclocal
-autoconf
-automake -a -c -f
+%{__autoconf}
+%{__automake}
 autoheader
 %configure \
 	--disable-orbit \
