@@ -9,7 +9,7 @@ Summary(pl):	Odtwarzacz video
 Summary(pt_BR):	Xine, um player de video
 Name:		xine-ui
 Version:	0.9.12
-Release:	0.1
+Release:	1
 License:	GPL
 Group:		X11/Applications/Multimedia
 Source0:	http://xine.sourceforge.net/files/%{name}-%{version}.tar.gz
@@ -19,6 +19,7 @@ Source3:	xine_logo.png
 Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-dfb.patch
 Patch2:		%{name}-ac_am.patch
+Patch3:		%{name}-no_corba.patch
 URL:		http://xine.sourceforge.net
 %{?_with_directfb:BuildRequires:	DirectFB-devel}
 %{!?_without_aa:BuildRequires:		aalib-devel}
@@ -111,15 +112,17 @@ Odtwarzacz filmów u¿ywaj±cy biblioteki DirectFB.
 #%patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 libtoolize --copy --force
 aclocal
 %{__autoconf}
-%{__automake}
+%{__automake} -a -c
 autoheader
 %configure \
 	--disable-orbit \
+	--disable-corba \
 %{?_without_lirc:	--disable-lirc} \
 %{!?_without_lirc:	--enable-lirc}
 
@@ -150,17 +153,18 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang -f xitk.lang
 %defattr(644,root,root,755)
-%doc doc/{README_en,README.{dxr3,divx4,syncfb},FAQ_en} ChangeLog
+%doc doc/{README_en,README.{config_en,divx4,dxr3,mrl,opengl,syncfb,tvmode},FAQ_en} ChangeLog 
 %lang(pl) %doc doc/{README,README.dxr3,FAQ}_pl
 %lang(it) %doc doc/{README,FAQ}_it
 %lang(es) %doc doc/{README,FAQ}_es
-%lang(fr) %doc doc/FAQ_fr
+%lang(fr) %doc doc/{README,FAQ}_fr
+%lang(de) %doc doc/{README,FAQ}_de
+%lang(it) %doc doc/{README,FAQ}_it
+%lang(uk) %doc doc/{README,FAQ}_uk
 %attr(755,root,root) %{_bindir}/xine
-%attr(755,root,root) %{_bindir}/xine-remote
-%{_datadir}/idl/xine.idl
-%{_datadir}/xine/skins/[^x]*
-#%{_datadir}/xine/skins/xinetic
-#%{_datadir}/xine/fonts
+%attr(755,root,root) %{_bindir}/xine-bugreport
+%attr(755,root,root) %{_bindir}/xine-check
+%{_datadir}/xine/skins/*
 %{_mandir}/man1/*.1*
 %lang(de) %{_mandir}/de/man1/*.1*
 %lang(fr) %{_mandir}/fr/man1/*.1*
@@ -168,6 +172,9 @@ rm -rf $RPM_BUILD_ROOT
 %lang(pl) %{_mandir}/pl/man1/*.1*
 %{_applnkdir}/Multimedia/xine.desktop
 %{_pixmapsdir}/*
+# CORBA files 
+#%{_datadir}/idl/xine.idl
+#%attr(755,root,root) %{_bindir}/xine-remote
 
 %{!?_without_aa:%files aa}
 %{!?_without_aa:%defattr(644,root,root,755)}
