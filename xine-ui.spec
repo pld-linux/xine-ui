@@ -3,6 +3,13 @@
 # --without	lirc
 # --with	directfb
 
+%ifarch alpha
+%define		_without_lirc	1
+%endif
+%ifarch sparc sparc64
+%define		_without_lirc	1
+%endif
+
 Summary:	A Free Video Player
 Summary(ko):	공개 동영상 플레이어
 Summary(pl):	Odtwarzacz video
