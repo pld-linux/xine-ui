@@ -28,6 +28,10 @@ BuildRequires:	xine-lib-devel >= %{version}
 %{!?_without_aa:BuildRequires:		gpm-devel}
 %{!?_without_lirc:BuildRequires:	lirc-devel}
 BuildRequires:	libpng-devel
+BuildRequires:	ncurses-devel
+BuildRequires:	gettext-devel
+BuildRequires:	bison
+BuildRequires:	pkgconfig
 Obsoletes:	xine
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -127,7 +131,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc doc/{README_en,README.{dxr3,divx4,syncfb,xinerc},FAQ_en}.gz *.gz
+%doc doc/{README_en,README.{dxr3,divx4,syncfb},FAQ_en}.gz *.gz
 %lang(pl) %doc doc/{README,README.dxr3,FAQ}_pl.gz
 %lang(it) %doc doc/{README,FAQ}_it.gz
 %lang(es) %doc doc/{README,FAQ}_es.gz
