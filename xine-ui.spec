@@ -12,7 +12,7 @@ Summary(pt_BR):	Xine, um player de video
 Summary(zh_CN):	一个免费的视频播放器(界面)
 Name:		xine-ui
 Version:	0.9.23
-Release:	1
+Release:	4
 License:	GPL
 Group:		X11/Applications/Multimedia
 Source0:	http://dl.sourceforge.net/xine/%{name}-%{version}.tar.gz
@@ -22,16 +22,17 @@ Source2:	xine.png
 Source3:	xine_logo.png
 Patch0:		%{name}-ncurses.patch
 Patch1:		%{name}-nolibs.patch
-Patch2:		%{name}-am18.patch
-Patch3:		%{name}-system-readline.patch
-Patch4:		%{name}-pl.po.patch
+Patch2:		%{name}-system-readline.patch
+Patch3:		%{name}-pl.po.patch
+Patch4:		%{name}-curl.patch
 URL:		http://xine.sourceforge.net/
 %{?with_directfb:BuildRequires:	DirectFB-devel >= 0.9.10}
 %{?with_aalib:BuildRequires:	aalib-devel >= 1.2.0}
 BuildRequires:	autoconf >= 2.53
-BuildRequires:	automake
+BuildRequires:	automake >= 1.8.1
 BuildRequires:	bison
 BuildRequires:	gettext-devel
+BuildRequires:	curl-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libtool
 %{?with_lirc:BuildRequires:	lirc-devel}
