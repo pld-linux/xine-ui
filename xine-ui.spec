@@ -132,13 +132,13 @@ Odtwarzacz filmów u¿ywaj±cy biblioteki DirectFB.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_applnkdir}/Multimedia,%{_pixmapsdir},%{_datadir}/xine/skins}
+install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir},%{_datadir}/xine/skins}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	docdir=$RPM_BUILD_ROOT%{_datadir}/doc/xine
 
-install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Multimedia/xine.desktop
+install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 install %{SOURCE3} $RPM_BUILD_ROOT%{_datadir}/xine/skins
 
@@ -175,7 +175,7 @@ rm -rf $RPM_BUILD_ROOT
 %lang(es) %{_mandir}/es/man1/xine*.1*
 %lang(fr) %{_mandir}/fr/man1/xine*.1*
 %lang(pl) %{_mandir}/pl/man1/xine*.1*
-%{_applnkdir}/Multimedia/xine.desktop
+%{_desktopdir}/xine.desktop
 %{_pixmapsdir}/*
 # CORBA files
 #%%{_datadir}/idl/xine.idl
