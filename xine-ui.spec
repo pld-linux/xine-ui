@@ -118,7 +118,7 @@ Odtwarzacz filmów u¿ywaj±cy biblioteki DirectFB.
 libtoolize --copy --force
 aclocal
 %{__autoconf}
-%{__automake} -a -c
+%{__automake}
 autoheader
 %configure \
 	--disable-orbit \
