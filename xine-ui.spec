@@ -8,7 +8,7 @@ Summary(pl):	Odtwarzacz video
 Summary(pt_BR):	Xine, um player de video
 Name:		xine-ui
 Version:	0.9.9
-Release:	0.2
+Release:	0.3
 License:	GPL
 Group:		X11/Applications/Multimedia
 Source0:	http://xine.sourceforge.net/files/%{name}-%{version}.tar.gz
@@ -17,19 +17,18 @@ Source2:	xine.png
 Source3:	xine_logo.png
 Patch0:		%{name}-DESTDIR.patch
 URL:		http://xine.sourceforge.net
-BuildRequires:	autoconf
-BuildRequires:	automake
-BuildRequires:	libtool
-BuildRequires:	sed
-BuildRequires:	xine-lib-devel >= %{version}
 %{!?_without_aa:BuildRequires:		aalib-devel}
 %{!?_without_aa:BuildRequires:		aalib-progs}
-%{!?_without_lirc:BuildRequires:	lirc-devel}
-BuildRequires:	libpng-devel
-BuildRequires:	ncurses-devel
-BuildRequires:	gettext-devel
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	bison
+BuildRequires:	gettext-devel
+BuildRequires:	libpng-devel
+BuildRequires:	libtool
+%{!?_without_lirc:BuildRequires:	lirc-devel}
+BuildRequires:	ncurses-devel
 BuildRequires:	pkgconfig
+BuildRequires:	xine-lib-devel >= %{version}
 Obsoletes:	xine
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -109,7 +108,7 @@ autoheader
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/{%{_applnkdir}/Multimedia,%{_pixmapsdir},%{_datadir}/xine/skins}
+install -d $RPM_BUILD_ROOT{%{_applnkdir}/Multimedia,%{_pixmapsdir},%{_datadir}/xine/skins}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
@@ -122,21 +121,20 @@ install %{SOURCE3} $RPM_BUILD_ROOT%{_datadir}/xine/skins
 %{!?_without_aa:install -d $RPM_BUILD_ROOT%{_abindir}}
 %{!?_without_aa:install $RPM_BUILD_ROOT%{_bindir}/aaxine $RPM_BUILD_ROOT%{_abindir}}
 
-gzip -9nf doc/{FAQ,README}* ChangeLog
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc doc/{README_en,README.{dxr3,divx4,syncfb},FAQ_en}.gz *.gz
-%lang(pl) %doc doc/{README,README.dxr3,FAQ}_pl.gz
-%lang(it) %doc doc/{README,FAQ}_it.gz
-%lang(es) %doc doc/{README,FAQ}_es.gz
-%lang(fr) %doc doc/FAQ_fr.gz
+%doc doc/{README_en,README.{dxr3,divx4,syncfb},FAQ_en} ChangeLog
+%lang(pl) %doc doc/{README,README.dxr3,FAQ}_pl
+%lang(it) %doc doc/{README,FAQ}_it
+%lang(es) %doc doc/{README,FAQ}_es
+%lang(fr) %doc doc/FAQ_fr
 %attr(755,root,root) %{_bindir}/xine
 %{_datadir}/idl/xine.idl
-%{_datadir}/xine/skins
+%{_datadir}/xine/skins/[^x]*
+%{_datadir}/xine/skins/xinetic
 %{_mandir}/man1/*.1*
 %lang(fr) %{_mandir}/fr/man1/*.1*
 %lang(es) %{_mandir}/es/man1/*.1*
