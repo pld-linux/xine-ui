@@ -1,0 +1,10 @@
+--- xine-ui-0.9.23/configure.ac.orig	2003-12-31 12:56:01.000000000 +0100
++++ xine-ui-0.9.23/configure.ac	2003-12-31 12:57:38.008882176 +0100
+@@ -103,7 +103,6 @@
+ ALL_LINGUAS="fr es pt_BR de sk pl_PL uk cs it"
+ AM_GNU_GETTEXT(use-libtool, need-ngettext)
+ AC_PROG_GMSGFMT_PLURAL
+-AC_CONFIG_LINKS($nls_cv_header_libgt, $nls_cv_header_intl)
+ AM_CONDITIONAL(INCLUDED_INTL, test x$USE_INCLUDED_LIBINTL = "xyes")
+ if test x"$USE_INCLUDED_LIBINTL" = x"yes"; then
+    INTLDIR="-I\$(top_builddir)/intl -I\$(top_srcdir)/intl"
