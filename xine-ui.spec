@@ -12,12 +12,12 @@ Summary(pl):	Odtwarzacz video
 Summary(pt_BR):	Xine, um player de video
 Summary(zh_CN):	一个免费的视频播放器(界面)
 Name:		xine-ui
-Version:	0.99.1
+Version:	0.99.2
 Release:	1
 License:	GPL
 Group:		X11/Applications/Multimedia
 Source0:	http://dl.sourceforge.net/xine/%{name}-%{version}.tar.gz
-# Source0-md5:	6309b312e41b0caaf53746715d0eb580
+# Source0-md5:	4a4cf5cc68bf65e6845f501ea87fdf94
 Source1:	xine.desktop
 Source2:	xine.png
 Source3:	xine_logo.png
