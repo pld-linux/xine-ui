@@ -1,17 +1,19 @@
 # Conditional build:
 # --without	aa
+# --without	lirc
 
 Summary:	A Free Video Player.
 Summary(pl):	Odtwarzacz video
 Summary(ko):	공개 동영상 플레이어
 Name:		xine-ui
-Version:	0.5.0
-Release:	2
+Version:	0.5.3
+Release:	1
 License:	GPL
 Group:		X11/Applications/Multimedia
 Group(de):	X11/Applikationen/Multimedia
 Group(pl):	X11/Aplikacje/Multimedia
 Source0:	http://xine.sourceforge.net/files/%{name}-%{version}.tar.gz
+Patch0:		%{name}-configure.patch
 Source1:	xine.desktop
 Source2:	xine_logo.png
 URL:		http://xine.sourceforge.net
@@ -19,12 +21,13 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
 BuildRequires:	sed
-BuildRequires:	xine-lib-devel >= 0.5.0
-BuildRequires:	xine-lib >= 0.5.0
+BuildRequires:	xine-lib-devel >= 0.5.3
+BuildRequires:	xine-lib >= 0.5.3
 %{!?_without_aa:BuildRequires:	aalib-devel}
 %{!?_without_aa:BuildRequires:	aalib-progs}
 %{!?_without_aa:BuildRequires:	slang-devel}
 %{!?_without_aa:BuildRequires:	gpm-devel}
+%{!?_without_lirc:BuildRequires:	lirc-devel}
 BuildRequires:	ORBit-devel
 BuildRequires:	libpng-devel
 Obsoletes:	xine
@@ -74,12 +77,17 @@ Video player using Ascii Art library.
 
 
 %prep
-%setup -q -n xine-ui-0.5.0
+%setup -q -n xine-ui-%{version}
+%patch0 -p1
 
 %build
-
-%configure2_13 \
-	--prefix=%{_prefix}
+aclocal
+autoconf
+automake -a -c
+autoheader
+%configure \
+	--prefix=%{_prefix} \
+%{?_without_lirc:	--disable-lirc}
 
 %{__make}
 
