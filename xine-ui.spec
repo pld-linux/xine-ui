@@ -16,7 +16,7 @@ Summary(pl):	Odtwarzacz video
 Summary(pt_BR):	Xine, um player de video
 Name:		xine-ui
 Version:	0.9.12
-Release:	2
+Release:	3
 License:	GPL
 Group:		X11/Applications/Multimedia
 Source0:	http://xine.sourceforge.net/files/%{name}-%{version}.tar.gz
@@ -41,6 +41,7 @@ BuildRequires:	libtool
 BuildRequires:	ncurses-devel
 BuildRequires:	pkgconfig
 BuildRequires:	xine-lib-devel >= %{version}
+Requires:	xine-plugin-audio
 Obsoletes:	xine
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -92,6 +93,7 @@ Summary(pl):	XINE - odtwarzacz Ascii Art
 Summary(pt_BR):	XINE - Player em Ascii Art (aalib)
 Group:		Applications/Graphics
 Requires:	xine-lib-aa >= %{version}
+Requires:	xine-plugin-audio
 
 %description aa
 Video player using Ascii Art library.
@@ -107,6 +109,7 @@ Summary:	XINE - player for DirectFB
 Summary(pl):	XINE - odtwarzacz dla DirectFB
 Group:		Applications/Graphics
 Requires:	xine-lib-directfb >= %{version}
+Requires:	xine-plugin-audio
 
 %description dfb
 Video player using DirectFB library.
