@@ -15,8 +15,8 @@ Summary(ko):	공개 동영상 플레이어
 Summary(pl):	Odtwarzacz video
 Summary(pt_BR):	Xine, um player de video
 Name:		xine-ui
-Version:	0.9.12
-Release:	3
+Version:	0.9.13
+Release:	1
 License:	GPL
 Group:		X11/Applications/Multimedia
 Source0:	http://xine.sourceforge.net/files/%{name}-%{version}.tar.gz
@@ -155,7 +155,7 @@ install %{SOURCE3} $RPM_BUILD_ROOT%{_datadir}/xine/skins
 %{?_with_directfb:install -d $RPM_BUILD_ROOT%{_abindir}}
 %{?_with_directfb:install $RPM_BUILD_ROOT%{_bindir}/dfbxine $RPM_BUILD_ROOT%{_abindir}}
 
-mv $RPM_BUILD_ROOT%{_datadir}/locale/pl_PL $RPM_BUILD_ROOT%{_datadir}/locale/pl
+mv $RPM_BUILD_ROOT%{_datadir}/locale/{pl_PL,pl}
 
 %find_lang %{name} --all-name
 
@@ -164,7 +164,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc doc/{README_en,README.{config_en,divx4,dxr3,mrl,opengl,syncfb,tvmode},FAQ_en} ChangeLog 
+%doc doc/{README_en,README.{config_en,divx4,dxr3,mrl,opengl,syncfb,tvmode},FAQ_en} ChangeLog $RPM_BUILD_ROOT%{_datadir}/doc/*
 %lang(de) %doc doc/{README,FAQ}_de
 %lang(es) %doc doc/{README,FAQ}_es
 %lang(fi) %doc doc/README_fi
@@ -175,7 +175,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/xine
 %attr(755,root,root) %{_bindir}/xine-bugreport
 %attr(755,root,root) %{_bindir}/xine-check
+%attr(755,root,root) %{_bindir}/xine-remote
 %{_datadir}/xine/skins/*
+%{_datadir}/xine/desktop
 %{_mandir}/man1/*.1*
 %lang(de) %{_mandir}/de/man1/*.1*
 %lang(es) %{_mandir}/es/man1/*.1*
