@@ -19,6 +19,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
 BuildRequires:	xine-lib-devel >= 0.5.0
+BuildRequires:	xine-lib >= 0.5.0
 %{!?_without_aa:BuildRequires: aalib-devel}
 %{!?_without_aa:BuildRequires: aalib-progs}
 BuildRequires:	ORBit-devel
@@ -122,6 +123,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/doc/xine/*
 %{_applnkdir}/Multimedia/xine.desktop
 
-%{!?_without_aa:%files aa}
-%{!?_without_aa:%defattr(644,root,root,755)}
+%files aa
+%defattr(644,root,root,755)
 %{!?_without_aa:%attr(755,root,root) %{_abindir}/aaxine}
