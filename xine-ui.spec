@@ -4,9 +4,6 @@
 # _without_lirc		- without lirc support
 # _with_directfb	- with dfbxine UI (doesn't work now)
 #
-%ifarch alpha sparc sparc64
-%define		_without_lirc	1
-%endif
 Summary:	A Free Video Player
 Summary(ko):	공개 동영상 플레이어
 Summary(pl):	Odtwarzacz video
