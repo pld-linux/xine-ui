@@ -1,6 +1,6 @@
---- xine-ui-0.9.23/po/pl_PL.po.orig	2003-12-24 15:21:58.000000000 +0100
-+++ xine-ui-0.9.23/po/pl_PL.po	2003-12-31 14:05:47.470189560 +0100
-@@ -1,17 +1,15 @@
+--- xine-ui-0.99.1/po/pl.po.orig	2004-04-17 00:14:00.000000000 +0200
++++ xine-ui-0.99.1/po/pl.po	2004-04-24 01:25:32.864057560 +0200
+@@ -1,18 +1,16 @@
 -# translation of pl_PL.po to Polski
 -# translation of pl_PL.po to Polish
 -# Polish xine-ui translation file.
@@ -13,57 +13,149 @@
  msgid ""
  msgstr ""
 -"Project-Id-Version: pl_PL\n"
-+"Project-Id-Version: xine-ui 0.9.23\n"
- "POT-Creation-Date: 2003-12-24 15:16+0100\n"
++"Project-Id-Version: xine-ui 0.99.1\n"
+ "Report-Msgid-Bugs-To: \n"
+ "POT-Creation-Date: 2004-04-17 00:13+0200\n"
  "PO-Revision-Date: 2003-12-24 14:09+0100\n"
  "Last-Translator: Bart³omiej Muryn <4ever@irc.pl>\n"
 -"Language-Team: Polski <pl@li.org>\n"
-+"Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
++"Language-Team: Polski <translation-team-pl@lists.sourceforge.net>\n"
  "MIME-Version: 1.0\n"
  "Content-Type: text/plain; charset=ISO-8859-2\n"
  "Content-Transfer-Encoding: 8bit\n"
-@@ -235,7 +233,7 @@
+@@ -146,6 +144,8 @@
+ "This is not allowed unless you enable the 'misc.implicit_config' setting "
+ "after reading and understanding its help text."
+ msgstr ""
++"Próba zmiany konfiguracji dla opcji: MRL.\n"
++"Nie jest to dozwolone chyba ¿e w³±czy siê opcjê 'misc.implicit_config' po przeczytaniu i zrozumieniu opisu do niej."
  
- #: src/xitk/control.c:776
+ #: src/xitk/config_wrapper.c:173
+ #, c-format
+@@ -243,7 +243,7 @@
+ 
+ #: src/xitk/control.c:796
  msgid "Close control window"
 -msgstr "Zamkniêcie panela kontrolnego"
 +msgstr "Zamkniêcie panelu kontrolnego"
  
- #: src/xitk/download.c:48
+ #: src/xitk/download.c:56
  msgid "Download in progress"
-@@ -477,11 +475,11 @@
+@@ -352,23 +352,22 @@
+ msgstr "Zoom: 50%%"
  
- #: src/xitk/event.c:1216
+ #: src/xitk/event.c:598 src/xitk/event.c:610
+-#, fuzzy, c-format
++#, c-format
+ msgid "A/V offset: %s"
+-msgstr "Wyrównanie A/V: %d"
++msgstr "Wyrównanie A/V: %s"
+ 
+ #: src/xitk/event.c:616
+ msgid "A/V Offset: reset."
+ msgstr "Wyrównanie A/V: reset."
+ 
+ #: src/xitk/event.c:625 src/xitk/event.c:635
+-#, fuzzy, c-format
++#, c-format
+ msgid "SPU Offset: %s"
+-msgstr "Wyrównanie SPU: %d"
++msgstr "Wyrównanie SPU: %s"
+ 
+ #: src/xitk/event.c:641
+-#, fuzzy
+ msgid "SPU Offset: reset."
+-msgstr "Wyrównanie A/V: reset."
++msgstr "Wyrównanie SPU: reset."
+ 
+ #: src/xitk/event.c:772 src/xitk/menus.c:187
+ msgid "Playlist: no loop."
+@@ -491,11 +490,11 @@
+ 
+ #: src/xitk/event.c:1260
  msgid "Hide video output window if there is no video in the stream"
 -msgstr "Ukryj okno wy¶witlania obrazu je¶li strumieñ nie zawiera obrazu"
 +msgstr "Ukryj okno wy¶wietlania obrazu je¶li strumieñ nie zawiera obrazu"
  
- #: src/xitk/event.c:1223
+ #: src/xitk/event.c:1267
  msgid "Visiblility behavior of panel"
 -msgstr "Zachowanie panela"
 +msgstr "Zachowanie panelu"
  
- #: src/xitk/event.c:1224
+ #: src/xitk/event.c:1268
  msgid ""
-@@ -542,7 +540,7 @@
- #: src/xitk/event.c:1286
+@@ -556,7 +555,7 @@
+ #: src/xitk/event.c:1330
  msgid "Use unscaled (full screen resolution) OSD if possible"
  msgstr ""
 -"Je¶li mo¿liwe, u¿ycie nieskalowanego (rozdzielczo¶æ pe³no-ekranowa) OSD."
 +"Je¶li mo¿liwe, u¿ycie nieskalowanego (rozdzielczo¶æ pe³noekranowa) OSD."
  
- #: src/xitk/event.c:1294
+ #: src/xitk/event.c:1338
  msgid "Dismiss OSD time (s)"
-@@ -1085,7 +1083,7 @@
+@@ -622,11 +621,11 @@
  
- #: src/xitk/main.c:615
+ #: src/xitk/event.c:1402
+ msgid "Menu shortcut style"
+-msgstr ""
++msgstr "Styl skrótów menu"
+ 
+ #: src/xitk/event.c:1403
+ msgid "Shortcut representation in menu, 'Ctrl,Alt' or 'C,M'."
+-msgstr ""
++msgstr "Przedstawienie skrótów w menu: 'Ctrl,Alt' czy 'C,M'."
+ 
+ #: src/xitk/event.c:1487
+ msgid "Unable to initialize Imlib\n"
+@@ -634,7 +633,7 @@
+ 
+ #: src/xitk/event_sender.c:416
+ msgid "xine Event Sender"
+-msgstr ""
++msgstr "Wysy³anie zdarzeñ xine"
+ 
+ #: src/xitk/event_sender.c:433
+ msgid "Up"
+@@ -812,16 +811,15 @@
+ 
+ #: src/xitk/kbindings.c:497 src/xitk/kbindings_man.c:497
+ msgid "and"
+-msgstr ""
++msgstr "i"
+ 
+ #: src/xitk/kbindings.c:510 src/xitk/kbindings_man.c:510
+-#, fuzzy
+ msgid ""
+ "The following key bindings pairs are identical:\n"
+ "\n"
+ msgstr ""
+-"To mapowanie klawisza jest redundantne z akcj±\n"
+-"\"%s\".\n"
++"Nastêpuj±ce pary przypisañ klawiszy s± identyczne:\n"
++"\n"
+ 
+ #: src/xitk/kbindings.c:527 src/xitk/kbindings_man.c:527
+ msgid ""
+@@ -829,6 +827,9 @@
+ "\n"
+ "What do you want to do ?\n"
+ msgstr ""
++".\n"
++"\n"
++"Co zrobiæ?\n"
+ 
+ #: src/xitk/kbindings.c:535 src/xitk/kbindings_man.c:535
+ msgid "Keybindings error!"
+@@ -1124,7 +1125,7 @@
+ 
+ #: src/xitk/main.c:626
  msgid "  -L, --no-lirc                Turn off LIRC support.\n"
 -msgstr "  -L, --no-lirc                wy³±czenie wsparcia dla LIRC'a\n"
 +msgstr "  -L, --no-lirc                wy³±czenie wsparcia dla LIRC-a\n"
  
- #: src/xitk/main.c:617
+ #: src/xitk/main.c:628
  msgid ""
-@@ -1170,7 +1168,7 @@
+@@ -1209,7 +1210,7 @@
  "  -l, --loop [=mode]           Ustaw tryb powtarzania listy odtwarzania "
  "(domy¶lnie: loop). Tryby:\n"
  "                                 'loop': powtarza ca³± listê odtwarzania.\n"
@@ -72,25 +164,25 @@
  "listy.\n"
  "                                 'shuffle': wybiera z listy losowo "
  "nieodtwarzane jeszcze pozycje\n"
-@@ -1185,7 +1183,7 @@
+@@ -1224,7 +1225,7 @@
  msgid ""
  "      --enqueue <mrl> ...      Enqueue mrl of a running session (session 0)\n"
  msgstr ""
 -"       --enqueue <mrl> ...      Kolejkuj MRL w bierz±cej sesji (sesja 0)\n"
 +"       --enqueue <mrl> ...      Kolejkuj MRL w bie¿±cej sesji (sesja 0)\n"
  
- #: src/xitk/main.c:640
+ #: src/xitk/main.c:651
  msgid ""
-@@ -1334,7 +1332,7 @@
- #: src/xitk/main.c:680
+@@ -1373,7 +1374,7 @@
+ #: src/xitk/main.c:691
  msgid "  -T, --tvout <backend>        Turn on tvout support. Backend can be:\n"
  msgstr ""
 -"  -T, --tvout <backend>        W±cz wsparcie dla wyj¶cia TV. <backend> mo¿e "
 +"  -T, --tvout <backend>        W³±cz wsparcie dla wyj¶cia TV. <backend> mo¿e "
  "byæ:\n"
  
- #: src/xitk/main.c:690
-@@ -1345,7 +1343,7 @@
+ #: src/xitk/main.c:701
+@@ -1384,7 +1385,7 @@
  "                    audio_decoder, video_decoder.\n"
  msgstr ""
  "      --list-plugins [=type]   Wy¶wietl wszystkie dostêpne wtyczki,\n"
@@ -99,25 +191,42 @@
  "                    audio_out, video_out, demux, input, sub, post,\n"
  "                    audio_decoder, video_decoder.\n"
  
-@@ -1423,7 +1421,7 @@
+@@ -1462,7 +1463,7 @@
  
- #: src/xitk/main.c:898 src/xitk/main.c:946
+ #: src/xitk/main.c:909 src/xitk/main.c:957
  msgid "main: not using any audio driver (as requested).\n"
 -msgstr "main: nie u¿ywam ¿adnego sterownika d¼wiêku (tak jak rz±dano)\n"
 +msgstr "main: nie u¿ywam ¿adnego sterownika d¼wiêku (tak jak ¿±dano)\n"
  
- #: src/xitk/main.c:919
+ #: src/xitk/main.c:930
  #, c-format
-@@ -1542,7 +1540,7 @@
- #: src/xitk/main.c:1492
+@@ -1566,6 +1567,7 @@
+ "The audio device is unavailable. Please verify if another program already "
+ "use it."
+ msgstr ""
++"Urz±dzenie d¼wiêkowe jest niedostêpne. Proszê sprawdziæ czy inny program z niego nie korzysta."
+ 
+ #: src/xitk/main.c:1191
+ msgid "*sight*, unkown error."
+@@ -1573,7 +1575,7 @@
+ 
+ #: src/xitk/main.c:1301
+ msgid "Your system seems too slow, the amoung of dropped frames is too high."
+-msgstr ""
++msgstr "System wydaje siê byæ zbyt wolny, liczba pominiêtych klatek jest zbyt du¿a."
+ 
+ #: src/xitk/main.c:1351
+ #, c-format
+@@ -1591,7 +1593,7 @@
+ #: src/xitk/main.c:1534
  #, c-format
  msgid "Bad aspect ratio mode '%s', see xine --help\n"
 -msgstr "B³êdne proporcjie ekranu '%s', Zobacz xine --help\n"
 +msgstr "B³êdne proporcje ekranu '%s', Zobacz xine --help\n"
  
- #: src/xitk/main.c:1556
+ #: src/xitk/main.c:1598
  #, c-format
-@@ -1603,7 +1601,7 @@
+@@ -1652,7 +1654,7 @@
  "Deinterlace plugin will be enabled on startup. Progressive streams are "
  "automaticaly detected with no performance penalty."
  msgstr ""
@@ -125,8 +234,19 @@
 +"Wtyczka korekty przeplotu zostanie w³±czona przy starcie. Strumienie "
  "progresywne s± wykrywane automatycznie bez ¿adnego wp³ywu na wydajno¶æ."
  
- #: src/xitk/main.c:2005
-@@ -2077,7 +2075,7 @@
+ #: src/xitk/main.c:2064
+@@ -2057,9 +2059,8 @@
+ msgstr "Auto"
+ 
+ #: src/xitk/menus.c:1116 src/xitk/menus.c:1125
+-#, fuzzy
+ msgid "Scan"
+-msgstr "Skanuj:"
++msgstr "Skanuj"
+ 
+ #: src/xitk/menus.c:1117 src/xitk/menus.c:1126 src/xitk/mrl_browser.c:276
+ #: src/xitk/playlist.c:1184
+@@ -2131,7 +2132,7 @@
  
  #: src/xitk/panel.c:48
  msgid "Play next chapter or mrl"
@@ -135,57 +255,90 @@
  
  #: src/xitk/panel.c:51
  msgid "Play previous entry from playlist"
-@@ -2085,7 +2083,7 @@
+@@ -2139,7 +2140,7 @@
  
  #: src/xitk/panel.c:52
  msgid "Play next entry from playlist"
 -msgstr "Odtwarzanie nastepnego wpisu z listy"
 +msgstr "Odtwarzanie nastêpnego wpisu z listy"
  
- #: src/xitk/panel.c:271
+ #: src/xitk/panel.c:282
  #, c-format
-@@ -2207,7 +2205,7 @@
+@@ -2151,17 +2152,17 @@
+ msgstr "Ca³kowity czas: --:--:--"
  
- #: src/xitk/panel.c:1395
+ #: src/xitk/panel.c:773
+-#, fuzzy, c-format
++#, c-format
+ msgid "Amp: %s"
+-msgstr "D¼wiêk: %s"
++msgstr "Wzmacniacz: %s"
+ 
+ #: src/xitk/panel.c:773 src/xitk/panel.c:778
+ msgid "Muted"
+-msgstr "Wyciszone"
++msgstr "wyciszony"
+ 
+ #: src/xitk/panel.c:773 src/xitk/panel.c:778
+ msgid "Unmuted"
+-msgstr "D¼wiêk w³±czony"
++msgstr "w³±czony"
+ 
+ #: src/xitk/panel.c:778
+ #, c-format
+@@ -2266,7 +2267,7 @@
+ 
+ #: src/xitk/panel.c:1428
  msgid "gui panel visibility"
 -msgstr "wy¶wietlanie panela gui"
 +msgstr "wy¶wietlanie panelu gui"
  
- #: src/xitk/playlist.c:394 src/xitk/playlist.c:1173 src/xitk/skins.c:1184
+ #: src/xitk/playlist.c:396 src/xitk/playlist.c:1194 src/xitk/skins.c:1198
  msgid "Load"
-@@ -2251,7 +2249,7 @@
+@@ -2310,7 +2311,7 @@
  
- #: src/xitk/playlist.c:1169
+ #: src/xitk/playlist.c:1190
  msgid "Add one or more entries in playlist"
 -msgstr "Dodanie jednego lub wiecej wpisów do listy"
 +msgstr "Dodanie jednego lub wiêcej wpisów do listy"
  
- #: src/xitk/playlist.c:1179
+ #: src/xitk/playlist.c:1200
  msgid "Load saved playlist"
-@@ -2280,7 +2278,7 @@
- #: src/xitk/post.c:225
+@@ -2339,7 +2340,7 @@
+ #: src/xitk/post.c:212
  msgid "Post audio plugin to used when playing streams without video"
  msgstr ""
 -"Wtyczka d¼wieku post-przetwarzania do u¿ycia ze strumieniami bez obrazu."
 +"Wtyczka d¼wiêku post-przetwarzania do u¿ycia ze strumieniami bez obrazu."
  
- #: src/xitk/post.c:539
+ #: src/xitk/post.c:521
  #, c-format
-@@ -2395,7 +2393,7 @@
+@@ -2454,7 +2455,7 @@
  #: src/xitk/skins.c:308
  #, c-format
  msgid "Failed to load %s, wrong version. Load fallback skin '%s'.\n"
 -msgstr "Nie uda³o siê za³adowaæ %s, b³edna wersja. Powrót do skóry '%s'.\n"
 +msgstr "Nie uda³o siê za³adowaæ %s, b³êdna wersja. Powrót do skóry '%s'.\n"
  
- #: src/xitk/skins.c:361
+ #: src/xitk/skins.c:366
  #, c-format
-@@ -2796,7 +2794,7 @@
- #: src/xitk/videowin.c:1504
+@@ -2593,9 +2594,8 @@
+ msgstr "Plik '%s' zapisany.\n"
+ 
+ #: src/xitk/splash.c:65
+-#, fuzzy
+ msgid "xine Splash"
+-msgstr "xine %s"
++msgstr "Splash xine"
+ 
+ #. Create window
+ #: src/xitk/stream_infos.c:463
+@@ -2860,7 +2860,7 @@
+ #: src/xitk/videowin.c:1503
  #, c-format
  msgid "XF86VidMode Extension (%d.%d) detected, trying to use it.\n"
 -msgstr "Zanleziono rozszerzenie XF86VidMode (%d.%d), próba u¿ycia.\n"
 +msgstr "Znaleziono rozszerzenie XF86VidMode (%d.%d), próba u¿ycia.\n"
  
- #: src/xitk/videowin.c:1509
+ #: src/xitk/videowin.c:1508
  #, c-format
