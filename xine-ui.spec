@@ -118,7 +118,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc doc/{README,README.{dxr3,divx4,syncfb,xinerc},FAQ}.gz *.gz
+%doc doc/{README_en,README.{dxr3,divx4,syncfb,xinerc},FAQ_en}.gz *.gz
 %lang(pl) %doc doc/{README,README.dxr3,FAQ}_pl.gz
 %lang(it) %doc doc/{README,FAQ}_it.gz
 %lang(es) %doc doc/{README,FAQ}_es.gz
@@ -126,8 +126,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/xine
 %{_datadir}/idl/xine.idl
 %{_datadir}/xine/skins
-%{_mandir}/man1/xine.1*
-%lang(fr) %{_mandir}/fr/man1/xine.1*
+%{_mandir}/man1/*.1*
+%lang(fr) %{_mandir}/fr/man1/*.1*
+%lang(es) %{_mandir}/es/man1/*.1*
+%lang(pl) %{_mandir}/pl/man1/*.1*
 %{_applnkdir}/Multimedia/xine.desktop
 
 %{!?_without_aa:%files aa}
