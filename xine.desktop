@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=xine player
+Name=Xine player
 Name[pl]=Odtwarzacz xine
 Comment=Movie player
 Comment[pl]=Odtwarzacz filmów
@@ -7,5 +7,4 @@ Icon=
 Exec=xine
 Terminal=0
 Type=Application
-
 # vi: encoding=utf-8
