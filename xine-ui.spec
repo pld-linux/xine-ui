@@ -92,7 +92,7 @@ necessidades de processador dependem das propriedades de cada arquivo.
 Summary:	XINE - Ascii Art player
 Summary(pl):	XINE - odtwarzacz Ascii Art
 Summary(pt_BR):	XINE - Player em Ascii Art (aalib)
-Group:		Applications/Graphics
+Group:		Applications/Multimedia
 Requires:	xine-lib-aa >= %{version}
 Requires:	xine-plugin-audio
 
@@ -108,7 +108,7 @@ Interface para o xine utilizando aalib (Ascii Art Library).
 %package dfb
 Summary:	XINE - player for DirectFB
 Summary(pl):	XINE - odtwarzacz dla DirectFB
-Group:		Applications/Graphics
+Group:		Applications/Multimedia
 Requires:	xine-lib-directfb >= %{version}
 Requires:	xine-plugin-audio
 
