@@ -14,6 +14,7 @@ Summary:	A Free Video Player
 Summary(ko):	傍俺 悼康惑 敲饭捞绢
 Summary(pl):	Odtwarzacz video
 Summary(pt_BR):	Xine, um player de video
+Summary(zh_CN):	一个免费的视频播放器(界面)
 Name:		xine-ui
 Version:	0.9.13
 Release:	1
