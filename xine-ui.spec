@@ -6,7 +6,7 @@ Summary(pl):	Odtwarzacz video
 Summary(ko):	°ø°³ µ¿¿µ»ó ÇÃ·¹ÀÌ¾î
 Name:		xine-ui
 Version:	0.5.0
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Multimedia
 Group(de):	X11/Applikationen/Multimedia
@@ -57,16 +57,16 @@ xine ´Â GPL¶óÀÌ¼±½º¸¦ µû¸£´Â UNIX¿ë °ø°³ µ¿¿µ»ó ÇÃ·¹ÀÌ¾îÀÔ´Ï´Ù. ÀÌ
 ³ªÁß¿¡´Â mpeg-4 ¿Í ´Ù¸¥ Çü½ÄÀÇ µ¿¿µ»óµµ Áö¿øÇÒ ¿¹Á¤ÀÔ´Ï´Ù.
 
 
-%{!?_without_aa:%package aa}
-%{!?_without_aa:Summary:	XINE - Ascii Art player.}
-%{!?_without_aa:Group:		Applications/Graphics}
-%{!?_without_aa:Group(de):	Applikationen/Grafik}
-%{!?_without_aa:Group(pl):	Aplikacje/Grafika}
-%{!?_without_aa:Group(pt):	Aplicações/Gráficos}
-%{!?_without_aa:Requires:	xine-lib-aa}
+%package aa
+Summary:	XINE - Ascii Art player.
+Group:		Applications/Graphics
+Group(de):	Applikationen/Grafik
+Group(pl):	Aplikacje/Grafika
+Group(pt):	Aplicações/Gráficos
+Requires:	xine-lib-aa
 
-%{!?_without_aa:%description aa}
-%{!?_without_aa:Video player using Ascii Art library.}
+%description aa
+Video player using Ascii Art library.
 
 
 %prep
