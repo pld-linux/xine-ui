@@ -17,7 +17,8 @@ Version:	0.9.21
 Release:	1
 License:	GPL
 Group:		X11/Applications/Multimedia
-Source0:	http://xine.sourceforge.net/files/%{name}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/xine/%{name}-%{version}.tar.gz
+# Source0-md5:	18baa9fbef7a87d4094e46b02f85d46a
 Source1:	xine.desktop
 Source2:	xine.png
 Source3:	xine_logo.png
