@@ -10,8 +10,6 @@ Version:	0.9.8
 Release:	1
 License:	GPL
 Group:		X11/Applications/Multimedia
-Group(de):	X11/Applikationen/Multimedia
-Group(pl):	X11/Aplikacje/Multimedia
 Source0:	http://xine.sourceforge.net/files/%{name}-%{version}.tar.gz
 Source1:	xine.desktop
 Source2:	xine_logo.png
@@ -70,9 +68,6 @@ mo¿e byæ dodana obs³uga MPEG-4 i innych formatów.
 Summary:	XINE - Ascii Art player
 Summary(pl):	XINE - odtwarzacz Ascii Art
 Group:		Applications/Graphics
-Group(de):	Applikationen/Grafik
-Group(pl):	Aplikacje/Grafika
-Group(pt):	Aplicações/Gráficos
 Requires:	xine-lib-aa >= %{version}
 
 %description aa
