@@ -145,13 +145,12 @@ install %{SOURCE3} $RPM_BUILD_ROOT%{_datadir}/xine/skins
 %{?_with_directfb:install -d $RPM_BUILD_ROOT%{_abindir}}
 %{?_with_directfb:install $RPM_BUILD_ROOT%{_bindir}/dfbxine $RPM_BUILD_ROOT%{_abindir}}
 
-%find_lang %{name}
-%find_lang xitk
+%find_lang %{name} --all-name
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files -f %{name}.lang -f xitk.lang
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc doc/{README_en,README.{config_en,divx4,dxr3,mrl,opengl,syncfb,tvmode},FAQ_en} ChangeLog 
 %lang(pl) %doc doc/{README,README.dxr3,FAQ}_pl
