@@ -6,8 +6,8 @@ Summary:	A Free Video Player.
 Summary(pl):	Odtwarzacz video
 Summary(ko):	공개 동영상 플레이어
 Name:		xine-ui
-Version:	0.9.1
-Release:	3
+Version:	0.9.2
+Release:	1
 License:	GPL
 Group:		X11/Applications/Multimedia
 Group(de):	X11/Applikationen/Multimedia
@@ -26,7 +26,6 @@ BuildRequires:	xine-lib-devel >= %{version}
 %{!?_without_aa:BuildRequires:		slang-devel}
 %{!?_without_aa:BuildRequires:		gpm-devel}
 %{!?_without_lirc:BuildRequires:	lirc-devel}
-#BuildRequires:	ORBit-devel
 BuildRequires:	libpng-devel
 Obsoletes:	xine
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -105,6 +104,8 @@ install %{SOURCE2} $RPM_BUILD_ROOT/%{_datadir}/xine/skins
 %{!?_without_aa:install -d $RPM_BUILD_ROOT/%{_abindir}}
 %{!?_without_aa:install $RPM_BUILD_ROOT/%{_bindir}/aaxine $RPM_BUILD_ROOT/%{_abindir}}
 
+gzip -9nf doc/{FAQ,README}* ChangeLog
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -120,9 +121,13 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/xine/skins/xinetic/*
 %{_datadir}/xine/skins/lcd/*
 # documentation
+%doc doc/{README,README.{dxr3,divx4,syncfb,xinerc},FAQ}.gz *.gz
+%lang(pl) %doc doc/{README,README.dxr3,FAQ}_pl.gz
+%lang(it) %doc doc/{README,FAQ}_it.gz
+%lang(es) %doc doc/{README,FAQ}_es.gz
+%lang(fr) %doc doc/FAQ_fr.gz
 %{_mandir}/fr/man1/xine.1*
 %{_mandir}/man1/xine.1*
-%{_datadir}/doc/xine/*
 %{_applnkdir}/Multimedia/xine.desktop
 
 %{!?_without_aa:%files aa}
