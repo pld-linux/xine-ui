@@ -157,6 +157,8 @@ install %{SOURCE3} $RPM_BUILD_ROOT%{_datadir}/xine/skins
 
 mv $RPM_BUILD_ROOT%{_datadir}/locale/{pl_PL,pl}
 
+cp src/xitk/xine-toolkit/README doc/README.xitk
+
 %find_lang %{name} --all-name
 
 %clean
@@ -164,7 +166,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc doc/{README_en,README.{config_en,divx4,dxr3,mrl,opengl,syncfb,tvmode},FAQ_en} ChangeLog $RPM_BUILD_ROOT%{_datadir}/doc/*
+%doc doc/{FAQ_en,README_en,README.*,bug_report_form} ChangeLog
 %lang(de) %doc doc/{README,FAQ}_de
 %lang(es) %doc doc/{README,FAQ}_es
 %lang(fi) %doc doc/README_fi
