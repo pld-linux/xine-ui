@@ -1,14 +1,15 @@
 # Conditional build:
 # --without	aa
 # --without	lirc
+# --with	directfb
 
 Summary:	A Free Video Player
 Summary(ko):	°ø°³ µ¿¿µ»ó ÇÃ·¹ÀÌ¾î
 Summary(pl):	Odtwarzacz video
 Summary(pt_BR):	Xine, um player de video
 Name:		xine-ui
-Version:	0.9.9
-Release:	0.3
+Version:	0.9.10
+Release:	1
 License:	GPL
 Group:		X11/Applications/Multimedia
 Source0:	http://xine.sourceforge.net/files/%{name}-%{version}.tar.gz
@@ -16,7 +17,9 @@ Source1:	xine.desktop
 Source2:	xine.png
 Source3:	xine_logo.png
 Patch0:		%{name}-DESTDIR.patch
+Patch1:		%{name}-dfb.patch
 URL:		http://xine.sourceforge.net
+%{?_with_directfb:BuildRequires:	DirectFB-devel}
 %{!?_without_aa:BuildRequires:		aalib-devel}
 %{!?_without_aa:BuildRequires:		aalib-progs}
 BuildRequires:	autoconf
@@ -90,9 +93,22 @@ Odtwarzacz filmów u¿ywaj±cy biblioteki Ascii Art.
 %description aa -l pt_BR
 Interface para o xine utilizando aalib (Ascii Art Library).
 
+%package dfb
+Summary:	XINE - player for DirectFB
+Summary(pl):	XINE - odtwarzacz dla DirectFB
+Group:		Applications/Graphics
+Requires:	xine-lib-directfb >= %{version}
+
+%description dfb
+Video player using DirectFB library.
+
+%description dfb -l pl
+Odtwarzacz filmów u¿ywaj±cy biblioteki DirectFB.
+
 %prep
 %setup -q -n xine-ui-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 aclocal
@@ -120,11 +136,16 @@ install %{SOURCE3} $RPM_BUILD_ROOT%{_datadir}/xine/skins
 
 %{!?_without_aa:install -d $RPM_BUILD_ROOT%{_abindir}}
 %{!?_without_aa:install $RPM_BUILD_ROOT%{_bindir}/aaxine $RPM_BUILD_ROOT%{_abindir}}
+%{?_with_directfb:install -d $RPM_BUILD_ROOT%{_abindir}}
+%{?_with_directfb:install $RPM_BUILD_ROOT%{_bindir}/dfbxine $RPM_BUILD_ROOT%{_abindir}}
+
+%find_lang %{name}
+%find_lang xitk
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files
+%files -f %{name}.lang -f xitk.lang
 %defattr(644,root,root,755)
 %doc doc/{README_en,README.{dxr3,divx4,syncfb},FAQ_en} ChangeLog
 %lang(pl) %doc doc/{README,README.dxr3,FAQ}_pl
@@ -132,10 +153,13 @@ rm -rf $RPM_BUILD_ROOT
 %lang(es) %doc doc/{README,FAQ}_es
 %lang(fr) %doc doc/FAQ_fr
 %attr(755,root,root) %{_bindir}/xine
+%attr(755,root,root) %{_bindir}/xine-remote
 %{_datadir}/idl/xine.idl
 %{_datadir}/xine/skins/[^x]*
 %{_datadir}/xine/skins/xinetic
+%{_datadir}/xine/fonts
 %{_mandir}/man1/*.1*
+%lang(de) %{_mandir}/de/man1/*.1*
 %lang(fr) %{_mandir}/fr/man1/*.1*
 %lang(es) %{_mandir}/es/man1/*.1*
 %lang(pl) %{_mandir}/pl/man1/*.1*
@@ -145,3 +169,7 @@ rm -rf $RPM_BUILD_ROOT
 %{!?_without_aa:%files aa}
 %{!?_without_aa:%defattr(644,root,root,755)}
 %{!?_without_aa:%attr(755,root,root) %{_abindir}/aaxine}
+
+%{?_with_directfb:%files dfb}
+%{?_with_directfb:%defattr(644,root,root,755)}
+%{?_with_directfb:%attr(755,root,root) %{_abindir}/dfbxine}
