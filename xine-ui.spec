@@ -7,12 +7,13 @@ Summary(pl):	Odtwarzacz video
 Summary(ko):	공개 동영상 플레이어
 Name:		xine-ui
 Version:	0.9.8
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Multimedia
 Source0:	http://xine.sourceforge.net/files/%{name}-%{version}.tar.gz
 Source1:	xine.desktop
-Source2:	xine_logo.png
+Source2:	xine.png
+Source3:	xine_logo.png
 Patch0:		%{name}-DESTDIR.patch
 URL:		http://xine.sourceforge.net
 BuildRequires:	autoconf
@@ -94,14 +95,15 @@ autoheader
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/{%{_applnkdir}/Multimedia,%{_datadir}/xine/skins}
+install -d $RPM_BUILD_ROOT/{%{_applnkdir}/Multimedia,%{_pixmapsdir},%{_datadir}/xine/skins}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	docdir=$RPM_BUILD_ROOT%{_datadir}/doc/xine
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Multimedia/xine.desktop
-install %{SOURCE2} $RPM_BUILD_ROOT%{_datadir}/xine/skins
+install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
+install %{SOURCE3} $RPM_BUILD_ROOT%{_datadir}/xine/skins
 
 %{!?_without_aa:install -d $RPM_BUILD_ROOT%{_abindir}}
 %{!?_without_aa:install $RPM_BUILD_ROOT%{_bindir}/aaxine $RPM_BUILD_ROOT%{_abindir}}
@@ -126,6 +128,7 @@ rm -rf $RPM_BUILD_ROOT
 %lang(es) %{_mandir}/es/man1/*.1*
 %lang(pl) %{_mandir}/pl/man1/*.1*
 %{_applnkdir}/Multimedia/xine.desktop
+%{_pixmapsdir}/*
 
 %{!?_without_aa:%files aa}
 %{!?_without_aa:%defattr(644,root,root,755)}
