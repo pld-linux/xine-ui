@@ -1,6 +1,7 @@
 #
 # Conditional build:
 %bcond_without	aalib		# without aaxine UI
+%bcond_without	caca		# without cacaxine UI
 %bcond_without	lirc		# without lirc support
 %bcond_with	directfb	# with dfbxine UI [disabled in sources at the moment]
 #
@@ -11,34 +12,36 @@ Summary(pl):	Odtwarzacz video
 Summary(pt_BR):	Xine, um player de video
 Summary(zh_CN):	一个免费的视频播放器(界面)
 Name:		xine-ui
-Version:	0.9.23
-Release:	3
+Version:	0.99.1
+Release:	1
 License:	GPL
 Group:		X11/Applications/Multimedia
 Source0:	http://dl.sourceforge.net/xine/%{name}-%{version}.tar.gz
-# Source0-md5:	526c96a7c08d2913e6f328e347fe615f
+# Source0-md5:	6309b312e41b0caaf53746715d0eb580
 Source1:	xine.desktop
 Source2:	xine.png
 Source3:	xine_logo.png
 Patch0:		%{name}-ncurses.patch
 Patch1:		%{name}-nolibs.patch
-Patch2:		%{name}-system-readline.patch
-Patch3:		%{name}-pl.po.patch
-Patch4:		%{name}-curl.patch
+Patch2:		%{name}-pl.po.patch
+Patch3:		%{name}-curl.patch
 URL:		http://xine.sourceforge.net/
 %{?with_directfb:BuildRequires:	DirectFB-devel >= 0.9.10}
 %{?with_aalib:BuildRequires:	aalib-devel >= 1.2.0}
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1.8.1
 BuildRequires:	bison
+BuildRequires:	curl-devel >= 7.10.2
 BuildRequires:	gettext-devel
+%{?with_caca:BuildRequires:	libcaca-devel >= 0.3}
+BuildRequires:	libnvtvsimple-devel >= 0.4.6
 BuildRequires:	libpng-devel
 BuildRequires:	libtool
 %{?with_lirc:BuildRequires:	lirc-devel}
 BuildRequires:	ncurses-devel
-#BuildRequires:	nvtv-devel >= 0.4.6	# not released yet
 BuildRequires:	pkgconfig
 BuildRequires:	readline-devel >= 4.2a
+BuildRequires:	xft-devel >= 2.0
 BuildRequires:	xine-lib-devel >= %{xine_ver}
 Requires:	xine-lib >= %{xine_ver}
 Requires:	xine-plugin-audio >= %{xine_ver}
@@ -101,6 +104,20 @@ Odtwarzacz film體 u縴waj眂y biblioteki Ascii Art.
 %description aa -l pt_BR
 Interface para o xine utilizando aalib (Ascii Art Library).
 
+%package caca
+Summary:	XINE - Color AsCii Art player
+Summary(pl):	XINE - odtwarzacz kolorowy Ascii Art
+Group:		Applications/Multimedia
+Requires:	xine-lib >= %{xine_ver}
+Requires:	xine-output-video-caca >= %{xine_ver}
+Requires:	xine-plugin-audio >= %{xine_ver}
+
+%description caca
+Video player using Colour AsCii Art library.
+
+%description caca -l pl
+Odtwarzacz film體 u縴waj眂y biblioteki CACA.
+
 %package dfb
 Summary:	XINE - player for DirectFB
 Summary(pl):	XINE - odtwarzacz dla DirectFB
@@ -121,7 +138,6 @@ Odtwarzacz film體 u縴waj眂y biblioteki DirectFB.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
 
 %build
 %{__libtoolize}
@@ -148,8 +164,6 @@ install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir},%{_datadir}/xine/skins}
 install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 install %{SOURCE3} $RPM_BUILD_ROOT%{_datadir}/xine/skins
-
-mv $RPM_BUILD_ROOT%{_datadir}/locale/{pl_PL,pl}
 
 cp src/xitk/xine-toolkit/README doc/README.xitk
 
@@ -195,6 +209,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/aaxine.1*
 %lang(de) %{_mandir}/de/man1/aaxine.1*
 %lang(pl) %{_mandir}/pl/man1/aaxine.1*
+%endif
+
+%if %{with caca}
+%files caca
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/cacaxine
 %endif
 
 %if %{with directfb}
