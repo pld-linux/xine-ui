@@ -1,13 +1,13 @@
 # Conditional build:
 # --without	aa
-# --with	lirc
+# --without	lirc
 
 Summary:	A Free Video Player.
 Summary(pl):	Odtwarzacz video
 Summary(ko):	공개 동영상 플레이어
 Name:		xine-ui
 Version:	0.9.1
-Release:	2
+Release:	3
 License:	GPL
 Group:		X11/Applications/Multimedia
 Group(de):	X11/Applikationen/Multimedia
@@ -25,7 +25,7 @@ BuildRequires:	xine-lib-devel >= %{version}
 %{!?_without_aa:BuildRequires:		aalib-progs}
 %{!?_without_aa:BuildRequires:		slang-devel}
 %{!?_without_aa:BuildRequires:		gpm-devel}
-%{?_with_lirc:BuildRequires:		lirc-devel}
+%{!?_without_lirc:BuildRequires:	lirc-devel}
 #BuildRequires:	ORBit-devel
 BuildRequires:	libpng-devel
 Obsoletes:	xine
@@ -85,8 +85,8 @@ autoheader
 %configure \
 	--prefix=%{_prefix} \
 	--disable-orbit \
-%{!?_with_lirc:	--disable-lirc} \
-%{?_with_lirc:	--enable-lirc}
+%{?_without_lirc:	--disable-lirc} \
+%{!?_without_lirc:	--enable-lirc}
 
 %{__make}
 
