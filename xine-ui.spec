@@ -123,6 +123,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/doc/xine/*
 %{_applnkdir}/Multimedia/xine.desktop
 
-%files aa
-%defattr(644,root,root,755)
+%{!?_without_aa:%files aa}
+%{!?_without_aa:%defattr(644,root,root,755)}
 %{!?_without_aa:%attr(755,root,root) %{_abindir}/aaxine}
