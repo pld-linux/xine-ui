@@ -18,10 +18,13 @@ URL:		http://xine.sourceforge.net
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
+BuildRequires:	sed
 BuildRequires:	xine-lib-devel >= 0.5.0
 BuildRequires:	xine-lib >= 0.5.0
-%{!?_without_aa:BuildRequires: aalib-devel}
-%{!?_without_aa:BuildRequires: aalib-progs}
+%{!?_without_aa:BuildRequires:	aalib-devel}
+%{!?_without_aa:BuildRequires:	aalib-progs}
+%{!?_without_aa:BuildRequires:	slang-devel}
+%{!?_without_aa:BuildRequires:	gpm-devel}
 BuildRequires:	ORBit-devel
 BuildRequires:	libpng-devel
 Obsoletes:	xine
@@ -74,34 +77,26 @@ Video player using Ascii Art library.
 %setup -q -n xine-ui-0.5.0
 
 %build
-#cp ./configure ./configure.orig
-#sed 's/xine_skin_dir=/xine_skin_dir=$RPM_BUILD_ROOT/' configure.orig > ./configure
 
 %configure2_13 \
 	--prefix=%{_prefix}
-#	--disable-xinetest 
-#	--disable-orbittest
+
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-install -d $RPM_BUILD_ROOT/%{_applnkdir}/Multimedia
+install -d $RPM_BUILD_ROOT/{%{_applnkdir}/Multimedia,%{_datadir}/xine/skins}
 
 %{__make} DESTDIR=$RPM_BUILD_ROOT \
           docdir=$RPM_BUILD_ROOT/%{_datadir}/doc/xine \
 	  install
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Multimedia/xine.desktop
-#cp doc/*.xpm $RPM_BUILD_ROOT/usr/include/X11/pixmaps
 install %{SOURCE2} $RPM_BUILD_ROOT/%{_datadir}/xine/skins
 
 %{!?_without_aa:install -d $RPM_BUILD_ROOT/%{_abindir}}
 %{!?_without_aa:install $RPM_BUILD_ROOT/%{_bindir}/aaxine $RPM_BUILD_ROOT/%{_abindir}}
-
-%post
-#/sbin/ldconfig
-#if test -d /usr/local/share/xine/skins/default; then rm -rf /usr/local/share/xine/skins/default && ln -s /usr/local/share/xine/skins/xinetic /usr/local/share/xine/skins/default; fi
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -112,11 +107,11 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/xine
 %{_datadir}/idl/xine.idl
 # skins
-%{_datadir}/xine/skins/*/*
 %{_datadir}/xine/skins/*.png
-#/usr/local/share/xine/skins/metal/*
-#/usr/local/share/xine/skins/pitt/*
-#/usr/local/share/xine/skins/xinetic/*
+%{_datadir}/xine/skins/metal/*
+%{_datadir}/xine/skins/pitt/*
+%{_datadir}/xine/skins/xinetic/*
+%{_datadir}/xine/skins/lcd/*
 # documentation
 %{_mandir}/fr/man1/xine.1*
 %{_mandir}/man1/xine.1*
