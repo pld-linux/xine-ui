@@ -9,7 +9,7 @@ Summary(pl):	Odtwarzacz video
 Summary(pt_BR):	Xine, um player de video
 Name:		xine-ui
 Version:	0.9.10
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Multimedia
 Source0:	http://xine.sourceforge.net/files/%{name}-%{version}.tar.gz
@@ -18,6 +18,7 @@ Source2:	xine.png
 Source3:	xine_logo.png
 Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-dfb.patch
+Patch2:		%{name}-ac_am.patch
 URL:		http://xine.sourceforge.net
 %{?_with_directfb:BuildRequires:	DirectFB-devel}
 %{!?_without_aa:BuildRequires:		aalib-devel}
@@ -109,6 +110,7 @@ Odtwarzacz filmów u¿ywaj±cy biblioteki DirectFB.
 %setup -q -n xine-ui-%{version}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 aclocal
