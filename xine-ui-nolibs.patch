@@ -1,0 +1,13 @@
+--- xine-ui-0.9.19/configure.ac.orig	Sun Mar  9 00:45:10 2003
++++ xine-ui-0.9.19/configure.ac	Sun Apr 13 13:57:32 2003
+@@ -380,8 +380,8 @@
+ dnl
+ dnl
+ NET_LIBS=""
+-AC_CHECK_LIB(socket, socket, NET_LIBS="-lsocket $NET_LIBS",)
+-AC_CHECK_LIB(nsl, gethostbyname, NET_LIBS="-lnsl $NET_LIBS",)
++AC_CHECK_FUNC(socket,,[AC_CHECK_LIB(socket, socket, NET_LIBS="-lsocket $NET_LIBS",)])
++AC_CHECK_FUNC(gethostbyname,,[AC_CHECK_LIB(nsl, gethostbyname, NET_LIBS="-lnsl $NET_LIBS",)])
+ AC_SUBST(NET_LIBS)
+ 
+ dnl

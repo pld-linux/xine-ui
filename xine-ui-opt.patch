@@ -1,0 +1,83 @@
+--- xine-ui-0.9.19/configure.ac.orig	Sun Apr 13 13:57:32 2003
++++ xine-ui-0.9.19/configure.ac	Sun Apr 13 14:00:18 2003
+@@ -627,7 +627,7 @@
+         AC_TRY_CFLAGS("$sarchopt=athlon", k7cpu="athlon", k7cpu="i686")
+ 
+ 	dnl add x86 specific CFLAGS
+-	CFLAGS="$CFLAGS -O3 -pipe -fomit-frame-pointer $f_af $f_al $f_aj $m_wm $m_psb -fexpensive-optimizations $f_si $f_nsa -ffast-math -funroll-loops -finline-functions"
++	CFLAGS="$CFLAGS -pipe -fomit-frame-pointer $f_af $f_al $f_aj $m_wm $m_psb -fexpensive-optimizations $f_si $f_nsa -ffast-math -funroll-loops -finline-functions"
+ 	DEBUG_CFLAGS="$DEBUG_CFLAGS -O"
+ 	
+ 	dnl enable x86 specific parts of the code
+@@ -682,19 +682,19 @@
+ 
+   alphaev56-*)
+     AC_DEFINE(__alpha__,1,[Define this if you're running Alpha architecture])
+-    CFLAGS="$CFLAGS -O3 -mcpu=ev56 -mieee"
++    CFLAGS="$CFLAGS -mcpu=ev56 -mieee"
+     DEBUG_CFLAGS="$DEBUG_CFLAGS -O -mcpu=ev56 -mieee"
+     ;;
+ 
+   alpha*)
+     AC_DEFINE(__alpha__,1,[Define this if you're running Alpha architecture])
+-    CFLAGS="$CFLAGS -O3 -mieee"
++    CFLAGS="$CFLAGS -mieee"
+     DEBUG_CFLAGS="$DEBUG_CFLAGS -O -mieee"
+     ;;
+ 
+   ppc-*-linux-* | powerpc-*) 
+     AC_DEFINE(__ppc__,1,[Define this if you're running PowerPC architecture])
+-    CFLAGS="$CFLAGS -O3 -pipe -fomit-frame-pointer $m_wm $m_psb -fexpensive-optimizations $f_si $f_nsa -ffast-math -funroll-loops -funroll-all-loops -finline-functions"
++    CFLAGS="$CFLAGS -pipe -fomit-frame-pointer $m_wm $m_psb -fexpensive-optimizations $f_si $f_nsa -ffast-math -funroll-loops -funroll-all-loops -finline-functions"
+     DEBUG_CFLAGS="$DEBUG_CFLAGS -O"
+     ;;
+ 
+@@ -702,31 +702,25 @@
+     AC_DEFINE(__sparc,1,[Define this if you're running Sparc architecture])
+ 
+     if test "$GCC" = yes; then
+-	CFLAGS="$CFLAGS -O3"
+ 	DEBUG_CFLAGS="$DEBUG_CFLAGS -O"
+     else
+-	CFLAGS="$CFLAGS -O"
+ 	DEBUG_CFLAGS="$DEBUG_CFLAGS -O"
+     fi
+     ;;
+ 
+   mips-*)
+-    CFLAGS="$CFLAGS -O3"
+     DEBUG_CFLAGS="$DEBUG_CFLAGS -O"
+     ;;
+ 
+   m68k-*)
+-    CFLAGS="$CFLAGS -O2"
+     DEBUG_CFLAGS="$DEBUG_CFLAGS -O"
+     ;;
+ 
+   ia64-*)
+-    CFLAGS="$CFLAGS -O3"
+     DEBUG_CFLAGS="$DEBUG_CFLAGS -O"
+     ;;
+ 
+   s390-*)
+-    CFLAGS="$CFLAGS -O3"
+     DEBUG_CFLAGS="$DEBUG_CFLAGS -O"
+     ;;
+ 
+@@ -736,7 +730,7 @@
+     echo
+     echo "Host type '$host' ($host_alias) is currently not supported by xine"
+     echo
+-    echo "Assuming that -O3 makes the compiler produce useful code."
++    echo "Assuming that $CFLAGS makes the compiler produce useful code."
+     echo
+     echo "You might experience problems with this, so please report your"
+     echo "architecture and, if possible, known good optimization flags for"
+@@ -746,7 +740,6 @@
+     echo "(sleeping one minute so you can read this...)"
+     sleep 60
+ 
+-    CFLAGS="$CFLAGS -O3"
+     DEBUG_CFLAGS="$DEBUG_CFLAGS -O"
+     ;;
+ esac

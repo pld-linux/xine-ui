@@ -1,15 +1,12 @@
+#
 # Conditional build:
-# --without	aa
-# --without	lirc
-# --with	directfb
-
-%ifarch alpha
+# _without_aa		- without aaxine UI
+# _without_lirc		- without lirc support
+# _with_directfb	- with dfbxine UI (doesn't work now)
+#
+%ifarch alpha sparc sparc64
 %define		_without_lirc	1
 %endif
-%ifarch sparc sparc64
-%define		_without_lirc	1
-%endif
-
 Summary:	A Free Video Player
 Summary(ko):	°ø°³ µ¿¿µ»ó ÇÃ·¹ÀÌ¾î
 Summary(pl):	Odtwarzacz video
@@ -24,16 +21,13 @@ Source0:	http://xine.sourceforge.net/files/%{name}-%{version}.tar.gz
 Source1:	xine.desktop
 Source2:	xine.png
 Source3:	xine_logo.png
-Patch0:		%{name}-DESTDIR.patch
-Patch1:		%{name}-dfb.patch
-Patch2:		%{name}-ac_am.patch
-Patch3:		%{name}-no_corba.patch
-Patch4:		%{name}-ncurses.patch
-URL:		http://xine.sourceforge.net
-%{?_with_directfb:BuildRequires:	DirectFB-devel}
-%{!?_without_aa:BuildRequires:		aalib-devel}
-%{!?_without_aa:BuildRequires:		aalib-progs}
-BuildRequires:	autoconf
+Patch0:		%{name}-ncurses.patch
+Patch1:		%{name}-nolibs.patch
+Patch2:		%{name}-opt.patch
+URL:		http://xine.sourceforge.net/
+%{?_with_directfb:BuildRequires:	DirectFB-devel >= 0.9.10}
+%{!?_without_aa:BuildRequires:		aalib-devel >= 1.2.0}
+BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
 BuildRequires:	bison
 BuildRequires:	gettext-devel
@@ -46,8 +40,6 @@ BuildRequires:	xine-lib-devel >= %{version}
 Requires:	xine-plugin-audio
 Obsoletes:	xine
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		_mandir		%{_prefix}/man
 
 %description
 xine is a free gpl-licensed video player for unix-like systems. We
@@ -118,12 +110,10 @@ Video player using DirectFB library.
 Odtwarzacz filmów u¿ywaj±cy biblioteki DirectFB.
 
 %prep
-%setup -q -n xine-ui-%{version}
-#%patch0 -p1
-#%patch1 -p1
-#%patch2 -p1
-#%patch3 -p1
-%patch4
+%setup -q
+%patch0 -p0
+%patch1 -p1
+%patch2 -p1
 
 %build
 %{__libtoolize}
@@ -170,11 +160,12 @@ rm -rf $RPM_BUILD_ROOT
 %lang(it) %doc doc/{README,FAQ}_it
 %lang(pl) %doc doc/{README,README.dxr3,FAQ}_pl
 %lang(uk) %doc doc/{README,FAQ}_uk
+#%attr(755,root,root) %{_bindir}/fbxine		(doesn't work for me)
 %attr(755,root,root) %{_bindir}/xine
 %attr(755,root,root) %{_bindir}/xine-bugreport
 %attr(755,root,root) %{_bindir}/xine-check
 %attr(755,root,root) %{_bindir}/xine-remote
-%{_datadir}/xine/skins/*
+%{_datadir}/xine/skins
 %{_datadir}/xine/desktop
 %{_mandir}/man1/*.1*
 %lang(de) %{_mandir}/de/man1/*.1*
