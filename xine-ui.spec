@@ -32,7 +32,7 @@ BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1.8.1
 BuildRequires:	bison
 BuildRequires:	gettext-devel
-BuildRequires:	libcurl-devel
+BuildRequires:	curl-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libtool
 %{?with_lirc:BuildRequires:	lirc-devel}
