@@ -6,7 +6,7 @@ Summary:	A Free Video Player.
 Summary(pl):	Odtwarzacz video
 Summary(ko):	공개 동영상 플레이어
 Name:		xine-ui
-Version:	0.9.1
+Version:	0.9.0
 Release:	1
 License:	GPL
 Group:		X11/Applications/Multimedia
@@ -20,7 +20,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
 BuildRequires:	sed
-BuildRequires:	xine-lib-devel >= 0.9.1
+BuildRequires:	xine-lib-devel >= %{version}
 %{!?_without_aa:BuildRequires:		aalib-devel}
 %{!?_without_aa:BuildRequires:		aalib-progs}
 %{!?_without_aa:BuildRequires:		slang-devel}
