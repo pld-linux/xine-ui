@@ -28,7 +28,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
 %define		_mandir		%{_prefix}/man
-
+%define		_abindir	/usr/bin
 
 %description
 xine is a free gpl-licensed video player for unix-like systems. We
@@ -85,7 +85,7 @@ Video player using Ascii Art library.
 %install
 rm -rf $RPM_BUILD_ROOT
 
-install -d $RPM_BUILD_ROOT%{_applnkdir}/Multimedia
+install -d $RPM_BUILD_ROOT/%{_applnkdir}/Multimedia
 
 %{__make} DESTDIR=$RPM_BUILD_ROOT \
           docdir=$RPM_BUILD_ROOT/%{_datadir}/doc/xine \
@@ -94,6 +94,9 @@ install -d $RPM_BUILD_ROOT%{_applnkdir}/Multimedia
 install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Multimedia/xine.desktop
 #cp doc/*.xpm $RPM_BUILD_ROOT/usr/include/X11/pixmaps
 install %{SOURCE2} $RPM_BUILD_ROOT/%{_datadir}/xine/skins
+
+%{!?_without_aa:install -d $RPM_BUILD_ROOT/%{_abindir}}
+%{!?_without_aa:install $RPM_BUILD_ROOT/%{_bindir}/aaxine $RPM_BUILD_ROOT/%{_abindir}}
 
 %post
 #/sbin/ldconfig
@@ -121,4 +124,4 @@ rm -rf $RPM_BUILD_ROOT
 
 %{!?_without_aa:%files aa}
 %{!?_without_aa:%defattr(644,root,root,755)}
-%{!?_without_aa:%attr(755,root,root) %{_bindir}/aaxine}
+%{!?_without_aa:%attr(755,root,root) %{_abindir}/aaxine}
