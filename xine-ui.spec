@@ -7,7 +7,7 @@ Summary(pl):	Odtwarzacz video
 Summary(ko):	°ø°³ µ¿¿µ»ó ÇÃ·¹ÀÌ¾î
 Name:		xine-ui
 Version:	0.9.7
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Multimedia
 Group(de):	X11/Applikationen/Multimedia
@@ -60,9 +60,14 @@ xine ´Â GPL¶óÀÌ¼±½º¸¦ µû¸£´Â UNIX¿ë °ø°³ µ¿¿µ»ó ÇÃ·¹ÀÌ¾îÀÔ´Ï´Ù. ÀÌ
 ÇÃ·¹ÀÌ¾î´Â mpeg-2 ¿Í mpeg 1 ½ºÆ®¸²À» Áö¿øÇÏ¸ç, ÇöÀç´Â Áö¿øÇÏÁö ¾ÊÁö¸¸
 ³ªÁß¿¡´Â mpeg-4 ¿Í ´Ù¸¥ Çü½ÄÀÇ µ¿¿µ»óµµ Áö¿øÇÒ ¿¹Á¤ÀÔ´Ï´Ù.
 
+%description -l pl
+xine jest wolnodostêpnym odtwarzaczem filmów dla systemów uniksowych.
+Obs³uguje strumienie MPEG-2 i MPEG-1 (przeplatany d¼wiêk i obraz),
+mo¿e byæ dodana obs³uga MPEG-4 i innych formatów.
 
 %package aa
 Summary:	XINE - Ascii Art player
+Summary(pl):	XINE - odtwarzacz Ascii Art
 Group:		Applications/Graphics
 Group(de):	Applikationen/Grafik
 Group(pl):	Aplikacje/Grafika
@@ -71,6 +76,9 @@ Requires:	xine-lib-aa >= %{version}
 
 %description aa
 Video player using Ascii Art library.
+
+%description aa -l pl
+Odtwarzacz filmów u¿ywaj±cy biblioteki Ascii Art.
 
 %prep
 %setup -q -n xine-ui-%{version}
