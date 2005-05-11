@@ -6,7 +6,7 @@
 %bcond_without	nvtv		# without nvtv support
 %bcond_with	directfb	# with dfbxine UI [disabled in sources at the moment]
 #
-%ifnarch alpha arm %{ix86} ia64 sh amd64
+%ifnarch alpha arm %{ix86} ia64 sh %{x8664}
 %undefine	with_nvtv
 %endif
 %define	xine_ver 1:1.0
@@ -45,6 +45,7 @@ BuildRequires:	libtool
 BuildRequires:	ncurses-devel
 BuildRequires:	pkgconfig
 BuildRequires:	readline-devel >= 4.2a
+BuildRequires:	rpmbuild(macros) >= 1.213
 BuildRequires:	xft-devel >= 2.0
 BuildRequires:	xine-lib-devel >= %{xine_ver}
 %{!?with_nvtv:BuildConflicts:	libnvtvsimple-devel}
