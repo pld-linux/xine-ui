@@ -17,7 +17,7 @@ Summary(pt_BR):	Xine, um player de video
 Summary(zh_CN):	一个免费的视频播放器(界面)
 Name:		xine-ui
 Version:	0.99.4
-Release:	4
+Release:	5
 License:	GPL
 Group:		X11/Applications/Multimedia
 Source0:	http://dl.sourceforge.net/xine/%{name}-%{version}.tar.gz
@@ -46,7 +46,7 @@ BuildRequires:	ncurses-devel
 BuildRequires:	pkgconfig
 BuildRequires:	readline-devel >= 4.2a
 BuildRequires:	rpmbuild(macros) >= 1.213
-BuildRequires:	xft-devel >= 2.0
+BuildRequires:	xorg-lib-libXft-devel
 BuildRequires:	xine-lib-devel >= %{xine_ver}
 %{!?with_nvtv:BuildConflicts:	libnvtvsimple-devel}
 Requires:	xine-lib >= %{xine_ver}
