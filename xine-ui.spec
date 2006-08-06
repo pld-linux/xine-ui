@@ -189,7 +189,7 @@ rm -rf $RPM_BUILD_ROOT
 %lang(it) %doc doc/README_it
 %lang(pl) %doc doc/README_pl
 %lang(uk) %doc doc/README_uk
-%attr(755,root,root) %{_bindir}/fbxine
+#%attr(755,root,root) %{_bindir}/fbxine
 %attr(755,root,root) %{_bindir}/xine
 %attr(755,root,root) %{_bindir}/xine-bugreport
 %attr(755,root,root) %{_bindir}/xine-check
