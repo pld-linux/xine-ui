@@ -158,7 +158,8 @@ Odtwarzacz filmów u¿ywaj±cy biblioteki DirectFB.
 	--disable-orbit \
 	--disable-corba \
 %{!?with_lirc:	--disable-lirc} \
-%{?with_lirc:	--enable-lirc}
+%{?with_lirc:	--enable-lirc} \
+%{?with_vdr:	--enable-vdr-keys}
 
 %{__make}
 
