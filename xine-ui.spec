@@ -5,6 +5,7 @@
 %bcond_without	lirc		# without lirc support
 %bcond_without	nvtv		# without nvtv support
 %bcond_with	directfb	# with dfbxine UI [disabled in sources at the moment]
+%bcond_with	vdr		# with vdr support
 #
 %ifnarch alpha arm %{ix86} ia64 sh %{x8664}
 %undefine	with_nvtv
@@ -29,6 +30,7 @@ Patch0:		%{name}-ncurses.patch
 Patch1:		%{name}-nolibs.patch
 Patch2:		%{name}-pl.po.patch
 Patch3:		%{name}-curl.patch
+Patch4:		%{name}-vdr.patch
 URL:		http://xine.sourceforge.net/
 %{?with_directfb:BuildRequires:	DirectFB-devel >= 0.9.10}
 %{?with_aalib:BuildRequires:	aalib-devel >= 1.2.0}
@@ -144,6 +146,7 @@ Odtwarzacz filmów u¿ywaj±cy biblioteki DirectFB.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%{?with_vdr:%patch4 -p1}
 
 %build
 %{__libtoolize}
