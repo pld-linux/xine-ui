@@ -12,10 +12,10 @@
 %endif
 %define	xine_ver 1:1.0
 Summary:	A Free Video Player
-Summary(ko.UTF-8):   공개 동영상 플레이어
-Summary(pl.UTF-8):   Odtwarzacz video
-Summary(pt_BR.UTF-8):   Xine, um player de video
-Summary(zh_CN.UTF-8):   一个免费的视频播放器(界面)
+Summary(ko.UTF-8):	공개 동영상 플레이어
+Summary(pl.UTF-8):	Odtwarzacz video
+Summary(pt_BR.UTF-8):	Xine, um player de video
+Summary(zh_CN.UTF-8):	一个免费的视频播放器(界面)
 Name:		xine-ui
 Version:	0.99.4
 Release:	7
@@ -97,8 +97,8 @@ necessidades de processador dependem das propriedades de cada arquivo.
 
 %package aa
 Summary:	XINE - Ascii Art player
-Summary(pl.UTF-8):   XINE - odtwarzacz Ascii Art
-Summary(pt_BR.UTF-8):   XINE - Player em Ascii Art (aalib)
+Summary(pl.UTF-8):	XINE - odtwarzacz Ascii Art
+Summary(pt_BR.UTF-8):	XINE - Player em Ascii Art (aalib)
 Group:		Applications/Multimedia
 Requires:	xine-lib >= %{xine_ver}
 Requires:	xine-output-video-aa >= %{xine_ver}
@@ -115,7 +115,7 @@ Interface para o xine utilizando aalib (Ascii Art Library).
 
 %package caca
 Summary:	XINE - Color AsCii Art player
-Summary(pl.UTF-8):   XINE - odtwarzacz kolorowy Ascii Art
+Summary(pl.UTF-8):	XINE - odtwarzacz kolorowy Ascii Art
 Group:		Applications/Multimedia
 Requires:	xine-lib >= %{xine_ver}
 Requires:	xine-output-video-caca >= %{xine_ver}
@@ -129,7 +129,7 @@ Odtwarzacz filmów używający biblioteki CACA.
 
 %package dfb
 Summary:	XINE - player for DirectFB
-Summary(pl.UTF-8):   XINE - odtwarzacz dla DirectFB
+Summary(pl.UTF-8):	XINE - odtwarzacz dla DirectFB
 Group:		Applications/Multimedia
 Requires:	xine-lib >= %{xine_ver}
 Requires:	xine-output-video-directfb >= %{xine_ver}
