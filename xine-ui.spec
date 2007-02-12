@@ -12,10 +12,10 @@
 %endif
 %define	xine_ver 1:1.0
 Summary:	A Free Video Player
-Summary(ko):	°ø°³ µ¿¿µ»ó ÇÃ·¹ÀÌ¾î
-Summary(pl):	Odtwarzacz video
-Summary(pt_BR):	Xine, um player de video
-Summary(zh_CN):	Ò»¸öÃâ·ÑµÄÊÓÆµ²¥·ÅÆ÷(½çÃæ)
+Summary(ko.UTF-8):   ê³µê°œ ë™ì˜ìƒ í”Œë ˆì´ì–´
+Summary(pl.UTF-8):   Odtwarzacz video
+Summary(pt_BR.UTF-8):   Xine, um player de video
+Summary(zh_CN.UTF-8):   ä¸€ä¸ªå…è´¹çš„è§†é¢‘æ’­æ”¾å™¨(ç•Œé¢)
 Name:		xine-ui
 Version:	0.99.4
 Release:	7
@@ -67,38 +67,38 @@ the playback of both. Depending on the properties of the mpeg stream,
 playback will need more or less processor power, 100% frame rate has
 been seen on a 400 MHz P II system.
 
-%description -l fr
-xine est un lecteur vidéo libre sous license GPL pour les systèmes de
-type unix. Nous supportons les flux mpeg-2 et mpeg-1 (audio + vidéo
-multiplexés), éventuellement le mpeg-4 et d'autres formats peuvent
-êtres ajoutés.
+%description -l fr.UTF-8
+xine est un lecteur vidÃ©o libre sous license GPL pour les systÃ¨mes de
+type unix. Nous supportons les flux mpeg-2 et mpeg-1 (audio + vidÃ©o
+multiplexÃ©s), Ã©ventuellement le mpeg-4 et d'autres formats peuvent
+Ãªtres ajoutÃ©s.
 
-xine joue les données vidéo et audio de vidéo mpeg-2 et synchronise la
-lecture des deux. En fonction des propriétes du flux mpeg, la lecture
+xine joue les donnÃ©es vidÃ©o et audio de vidÃ©o mpeg-2 et synchronise la
+lecture des deux. En fonction des propriÃ©tes du flux mpeg, la lecture
 aura besoin de plus ou moins de puissance du processeur, 100% de
-restitution de trame a été vus sur un système PII 400MHz.
+restitution de trame a Ã©tÃ© vus sur un systÃ¨me PII 400MHz.
 
-%description -l ko
-xine ´Â GPL¶óÀÌ¼±½º¸¦ µû¸£´Â UNIX¿ë °ø°³ µ¿¿µ»ó ÇÃ·¹ÀÌ¾îÀÔ´Ï´Ù. ÀÌ
-ÇÃ·¹ÀÌ¾î´Â mpeg-2 ¿Í mpeg 1 ½ºÆ®¸²À» Áö¿øÇÏ¸ç, ÇöÀç´Â Áö¿øÇÏÁö ¾ÊÁö¸¸
-³ªÁß¿¡´Â mpeg-4 ¿Í ´Ù¸¥ Çü½ÄÀÇ µ¿¿µ»óµµ Áö¿øÇÒ ¿¹Á¤ÀÔ´Ï´Ù.
+%description -l ko.UTF-8
+xine ëŠ” GPLë¼ì´ì„ ìŠ¤ë¥¼ ë”°ë¥´ëŠ” UNIXìš© ê³µê°œ ë™ì˜ìƒ í”Œë ˆì´ì–´ìž…ë‹ˆë‹¤. ì´
+í”Œë ˆì´ì–´ëŠ” mpeg-2 ì™€ mpeg 1 ìŠ¤íŠ¸ë¦¼ì„ ì§€ì›í•˜ë©°, í˜„ìž¬ëŠ” ì§€ì›í•˜ì§€ ì•Šì§€ë§Œ
+ë‚˜ì¤‘ì—ëŠ” mpeg-4 ì™€ ë‹¤ë¥¸ í˜•ì‹ì˜ ë™ì˜ìƒë„ ì§€ì›í•  ì˜ˆì •ìž…ë‹ˆë‹¤.
 
-%description -l pl
-xine jest wolnodostêpnym odtwarzaczem filmów dla systemów uniksowych.
-Obs³uguje strumienie MPEG-2 i MPEG-1 (przeplatany d¼wiêk i obraz),
-mo¿e byæ dodana obs³uga MPEG-4 i innych formatów.
+%description -l pl.UTF-8
+xine jest wolnodostÄ™pnym odtwarzaczem filmÃ³w dla systemÃ³w uniksowych.
+ObsÅ‚uguje strumienie MPEG-2 i MPEG-1 (przeplatany dÅºwiÄ™k i obraz),
+moÅ¼e byÄ‡ dodana obsÅ‚uga MPEG-4 i innych formatÃ³w.
 
-%description -l pt_BR
-O xine é um video player GPL para sistemas unix. Lê arquivos MPEG-2 e
-MPEG-1, além de AVIs MS MPEG4 / OpenDivX.
+%description -l pt_BR.UTF-8
+O xine Ã© um video player GPL para sistemas unix. LÃª arquivos MPEG-2 e
+MPEG-1, alÃ©m de AVIs MS MPEG4 / OpenDivX.
 
-O xine lê o conteúdo vídeo e áudio e sincroniza-os em tempo-real. As
+O xine lÃª o conteÃºdo vÃ­deo e Ã¡udio e sincroniza-os em tempo-real. As
 necessidades de processador dependem das propriedades de cada arquivo.
 
 %package aa
 Summary:	XINE - Ascii Art player
-Summary(pl):	XINE - odtwarzacz Ascii Art
-Summary(pt_BR):	XINE - Player em Ascii Art (aalib)
+Summary(pl.UTF-8):   XINE - odtwarzacz Ascii Art
+Summary(pt_BR.UTF-8):   XINE - Player em Ascii Art (aalib)
 Group:		Applications/Multimedia
 Requires:	xine-lib >= %{xine_ver}
 Requires:	xine-output-video-aa >= %{xine_ver}
@@ -107,15 +107,15 @@ Requires:	xine-plugin-audio >= %{xine_ver}
 %description aa
 Video player using Ascii Art library.
 
-%description aa -l pl
-Odtwarzacz filmów u¿ywaj±cy biblioteki Ascii Art.
+%description aa -l pl.UTF-8
+Odtwarzacz filmÃ³w uÅ¼ywajÄ…cy biblioteki Ascii Art.
 
-%description aa -l pt_BR
+%description aa -l pt_BR.UTF-8
 Interface para o xine utilizando aalib (Ascii Art Library).
 
 %package caca
 Summary:	XINE - Color AsCii Art player
-Summary(pl):	XINE - odtwarzacz kolorowy Ascii Art
+Summary(pl.UTF-8):   XINE - odtwarzacz kolorowy Ascii Art
 Group:		Applications/Multimedia
 Requires:	xine-lib >= %{xine_ver}
 Requires:	xine-output-video-caca >= %{xine_ver}
@@ -124,12 +124,12 @@ Requires:	xine-plugin-audio >= %{xine_ver}
 %description caca
 Video player using Colour AsCii Art library.
 
-%description caca -l pl
-Odtwarzacz filmów u¿ywaj±cy biblioteki CACA.
+%description caca -l pl.UTF-8
+Odtwarzacz filmÃ³w uÅ¼ywajÄ…cy biblioteki CACA.
 
 %package dfb
 Summary:	XINE - player for DirectFB
-Summary(pl):	XINE - odtwarzacz dla DirectFB
+Summary(pl.UTF-8):   XINE - odtwarzacz dla DirectFB
 Group:		Applications/Multimedia
 Requires:	xine-lib >= %{xine_ver}
 Requires:	xine-output-video-directfb >= %{xine_ver}
@@ -138,8 +138,8 @@ Requires:	xine-plugin-audio >= %{xine_ver}
 %description dfb
 Video player using DirectFB library.
 
-%description dfb -l pl
-Odtwarzacz filmów u¿ywaj±cy biblioteki DirectFB.
+%description dfb -l pl.UTF-8
+Odtwarzacz filmÃ³w uÅ¼ywajÄ…cy biblioteki DirectFB.
 
 %prep
 %setup -q
