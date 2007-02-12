@@ -3,15 +3,13 @@
 # --without	lirc
 
 Summary:	A Free Video Player
-Summary(pl):	Odtwarzacz video
-Summary(ko):	°ø°³ µ¿¿µ»ó ÇÃ·¹ÀÌ¾î
+Summary(pl.UTF-8):   Odtwarzacz video
+Summary(ko.UTF-8):   ê³µê°œ ë™ì˜ìƒ í”Œë ˆì´ì–´
 Name:		xine-ui
 Version:	0.9.8
 Release:	1
 License:	GPL
 Group:		X11/Applications/Multimedia
-Group(de):	X11/Applikationen/Multimedia
-Group(pl):	X11/Aplikacje/Multimedia
 Source0:	http://xine.sourceforge.net/files/%{name}-%{version}.tar.gz
 Source1:	xine.desktop
 Source2:	xine_logo.png
@@ -45,41 +43,38 @@ the playback of both. Depending on the properties of the mpeg stream,
 playback will need more or less processor power, 100% frame rate has
 been seen on a 400 MHz P II system.
 
-%description -l fr
-xine est un lecteur vidéo libre sous license GPL pour les systèmes de
-type unix. Nous supportons les flux mpeg-2 et mpeg-1 (audio + vidéo
-multiplexés), éventuellement le mpeg-4 et d'autres formats peuvent
-êtres ajoutés.
+%description -l fr.UTF-8
+xine est un lecteur vidÃ©o libre sous license GPL pour les systÃ¨mes de
+type unix. Nous supportons les flux mpeg-2 et mpeg-1 (audio + vidÃ©o
+multiplexÃ©s), Ã©ventuellement le mpeg-4 et d'autres formats peuvent
+Ãªtres ajoutÃ©s.
 
-xine joue les données vidéo et audio de vidéo mpeg-2 et synchronise la
-lecture des deux. En fonction des propriétes du flux mpeg, la lecture
+xine joue les donnÃ©es vidÃ©o et audio de vidÃ©o mpeg-2 et synchronise la
+lecture des deux. En fonction des propriÃ©tes du flux mpeg, la lecture
 aura besoin de plus ou moins de puissance du processeur, 100% de
-restitution de trame a été vus sur un système PII 400MHz.
+restitution de trame a Ã©tÃ© vus sur un systÃ¨me PII 400MHz.
 
-%description -l ko
-xine ´Â GPL¶óÀÌ¼±½º¸¦ µû¸£´Â UNIX¿ë °ø°³ µ¿¿µ»ó ÇÃ·¹ÀÌ¾îÀÔ´Ï´Ù. ÀÌ
-ÇÃ·¹ÀÌ¾î´Â mpeg-2 ¿Í mpeg 1 ½ºÆ®¸²À» Áö¿øÇÏ¸ç, ÇöÀç´Â Áö¿øÇÏÁö ¾ÊÁö¸¸
-³ªÁß¿¡´Â mpeg-4 ¿Í ´Ù¸¥ Çü½ÄÀÇ µ¿¿µ»óµµ Áö¿øÇÒ ¿¹Á¤ÀÔ´Ï´Ù.
+%description -l ko.UTF-8
+xine ëŠ” GPLë¼ì´ì„ ìŠ¤ë¥¼ ë”°ë¥´ëŠ” UNIXìš© ê³µê°œ ë™ì˜ìƒ í”Œë ˆì´ì–´ìž…ë‹ˆë‹¤. ì´
+í”Œë ˆì´ì–´ëŠ” mpeg-2 ì™€ mpeg 1 ìŠ¤íŠ¸ë¦¼ì„ ì§€ì›í•˜ë©°, í˜„ìž¬ëŠ” ì§€ì›í•˜ì§€ ì•Šì§€ë§Œ
+ë‚˜ì¤‘ì—ëŠ” mpeg-4 ì™€ ë‹¤ë¥¸ í˜•ì‹ì˜ ë™ì˜ìƒë„ ì§€ì›í•  ì˜ˆì •ìž…ë‹ˆë‹¤.
 
-%description -l pl
-xine jest wolnodostêpnym odtwarzaczem filmów dla systemów uniksowych.
-Obs³uguje strumienie MPEG-2 i MPEG-1 (przeplatany d¼wiêk i obraz),
-mo¿e byæ dodana obs³uga MPEG-4 i innych formatów.
+%description -l pl.UTF-8
+xine jest wolnodostÄ™pnym odtwarzaczem filmÃ³w dla systemÃ³w uniksowych.
+ObsÅ‚uguje strumienie MPEG-2 i MPEG-1 (przeplatany dÅºwiÄ™k i obraz),
+moÅ¼e byÄ‡ dodana obsÅ‚uga MPEG-4 i innych formatÃ³w.
 
 %package aa
 Summary:	XINE - Ascii Art player
-Summary(pl):	XINE - odtwarzacz Ascii Art
+Summary(pl.UTF-8):   XINE - odtwarzacz Ascii Art
 Group:		Applications/Graphics
-Group(de):	Applikationen/Grafik
-Group(pl):	Aplikacje/Grafika
-Group(pt):	Aplicações/Gráficos
 Requires:	xine-lib-aa >= %{version}
 
 %description aa
 Video player using Ascii Art library.
 
-%description aa -l pl
-Odtwarzacz filmów u¿ywaj±cy biblioteki Ascii Art.
+%description aa -l pl.UTF-8
+Odtwarzacz filmÃ³w uÅ¼ywajÄ…cy biblioteki Ascii Art.
 
 %prep
 %setup -q -n xine-ui-%{version}
