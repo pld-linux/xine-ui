@@ -4,7 +4,7 @@
 %bcond_without	caca		# without cacaxine UI
 %bcond_without	lirc		# without lirc support
 %bcond_without	nvtv		# without nvtv support
-%bcond_with	directfb	# with dfbxine UI [disabled in sources at the moment]
+%bcond_without	directfb	# without dfbxine UI
 %bcond_with	vdr		# with vdr support
 #
 %ifnarch alpha arm %{ix86} ia64 sh %{x8664}
@@ -197,7 +197,7 @@ rm -rf $RPM_BUILD_ROOT
 %lang(it) %doc doc/README_it
 %lang(pl) %doc doc/README_pl
 %lang(uk) %doc doc/README_uk
-#%attr(755,root,root) %{_bindir}/fbxine
+%attr(755,root,root) %{_bindir}/fbxine
 %attr(755,root,root) %{_bindir}/xine
 %attr(755,root,root) %{_bindir}/xine-bugreport
 %attr(755,root,root) %{_bindir}/xine-check
