@@ -143,7 +143,7 @@ Odtwarzacz filmów używający biblioteki DirectFB.
 
 %prep
 %setup -q
-#%patch0 -p0
+%patch0 -p0
 %patch1 -p1
 #%patch2 -p1
 %patch3 -p1
