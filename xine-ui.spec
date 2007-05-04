@@ -17,12 +17,12 @@ Summary(pl.UTF-8):	Odtwarzacz video
 Summary(pt_BR.UTF-8):	Xine, um player de video
 Summary(zh_CN.UTF-8):	一个免费的视频播放器(界面)
 Name:		xine-ui
-Version:	0.99.4
-Release:	7
+Version:	0.99.5
+Release:	0.1
 License:	GPL
 Group:		X11/Applications/Multimedia
 Source0:	http://dl.sourceforge.net/xine/%{name}-%{version}.tar.gz
-# Source0-md5:	90ea1f76747e9788a30a73e7f4a76cf6
+# Source0-md5:	e643cd1fcad4d98a5ae4eb877ce5087b
 Source1:	xine.desktop
 Source2:	xine.png
 Source3:	xine_logo.png
@@ -40,7 +40,7 @@ BuildRequires:	automake >= 1:1.8.1
 BuildRequires:	bison
 BuildRequires:	curl-devel >= 7.10.2
 BuildRequires:	gettext-devel
-%{?with_caca:BuildRequires:	libcaca-devel >= 0.3}
+%{?with_caca:BuildRequires:	libcaca-devel >= 0.9}
 %{?with_nvtv:BuildRequires:	libnvtvsimple-devel >= 0.4.6}
 BuildRequires:	libpng-devel
 BuildRequires:	libtool
@@ -143,11 +143,11 @@ Odtwarzacz filmów używający biblioteki DirectFB.
 
 %prep
 %setup -q
-%patch0 -p0
+#%patch0 -p0
 %patch1 -p1
-%patch2 -p1
+#%patch2 -p1
 %patch3 -p1
-%patch4 -p1
+#%patch4 -p1
 #%{?with_vdr:%patchX -p1}
 
 %build
@@ -159,9 +159,11 @@ Odtwarzacz filmów używający biblioteki DirectFB.
 %configure \
 	--disable-orbit \
 	--disable-corba \
+	--with-ncurses \
 %{!?with_lirc:	--disable-lirc} \
 %{?with_lirc:	--enable-lirc} \
-%{?with_vdr:	--enable-vdr-keys}
+%{?with_vdr:	--enable-vdr-keys} \
+	--with%{!?with_aalib:out}-aalib
 
 %{__make}
 
