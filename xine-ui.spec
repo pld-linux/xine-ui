@@ -4,7 +4,7 @@
 %bcond_without	caca		# without cacaxine UI
 %bcond_without	lirc		# without lirc support
 %bcond_without	nvtv		# without nvtv support
-%bcond_without	directfb	# without dfbxine UI
+%bcond_with	directfb	# with dfbxine UI [disabled in sources at the moment]
 %bcond_with	vdr		# with vdr support
 #
 %ifnarch alpha arm %{ix86} ia64 sh %{x8664}
