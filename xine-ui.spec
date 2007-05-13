@@ -10,7 +10,7 @@
 %ifnarch alpha arm %{ix86} ia64 sh %{x8664}
 %undefine	with_nvtv
 %endif
-%define	xine_ver 1:1.0
+%define	xine_ver 1:1.1.0
 Summary:	A Free Video Player
 Summary(ko.UTF-8):	공개 동영상 플레이어
 Summary(pl.UTF-8):	Odtwarzacz video
