@@ -144,9 +144,11 @@ Odtwarzacz filmów używający biblioteki DirectFB.
 %setup -q
 %patch0 -p0
 %patch1 -p1
-#%patch2 -p1
+%patch2 -p1
 %patch3 -p1
 #%{?with_vdr:%patchX -p1}
+
+rm -f po/stamp-po
 
 %build
 %{__libtoolize}
@@ -155,8 +157,6 @@ Odtwarzacz filmów używający biblioteki DirectFB.
 %{__automake}
 %{__autoheader}
 %configure \
-	--disable-orbit \
-	--disable-corba \
 	--with-ncurses \
 %{!?with_lirc:	--disable-lirc} \
 %{?with_lirc:	--enable-lirc} \
@@ -178,6 +178,7 @@ install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 install %{SOURCE3} $RPM_BUILD_ROOT%{_datadir}/xine/skins
 
 cp src/xitk/xine-toolkit/README doc/README.xitk
+rm -rf $RPM_BUILD_ROOT%{_docdir}/{xine-ui,xitk}
 
 %find_lang %{name} --all-name
 
@@ -211,9 +212,6 @@ rm -rf $RPM_BUILD_ROOT
 %lang(pl) %{_mandir}/pl/man1/xine*.1*
 %{_desktopdir}/xine.desktop
 %{_pixmapsdir}/*
-# CORBA files
-#%%{_datadir}/idl/xine.idl
-#%attr(755,root,root) %{_bindir}/xine-remote
 
 %if %{with aalib}
 %files aa
