@@ -57,7 +57,7 @@ Obsoletes:	xine
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-xine is a free gpl-licensed video player for unix-like systems. We
+xine is a free gpl-licensed video player for Unix-like systems. We
 support mpeg-2 and mpeg-1 system (audio + video multiplexed) streams,
 eventually mpeg-4 and other formats might be added.
 
@@ -68,7 +68,7 @@ been seen on a 400 MHz P II system.
 
 %description -l fr.UTF-8
 xine est un lecteur vidéo libre sous license GPL pour les systèmes de
-type unix. Nous supportons les flux mpeg-2 et mpeg-1 (audio + vidéo
+type Unix. Nous supportons les flux mpeg-2 et mpeg-1 (audio + vidéo
 multiplexés), éventuellement le mpeg-4 et d'autres formats peuvent
 êtres ajoutés.
 
@@ -104,24 +104,24 @@ Requires:	xine-output-video-aa >= %{xine_ver}
 Requires:	xine-plugin-audio >= %{xine_ver}
 
 %description aa
-Video player using Ascii Art library.
+Video player using ASCII Art library.
 
 %description aa -l pl.UTF-8
-Odtwarzacz filmów używający biblioteki Ascii Art.
+Odtwarzacz filmów używający biblioteki ASCII Art.
 
 %description aa -l pt_BR.UTF-8
-Interface para o xine utilizando aalib (Ascii Art Library).
+Interface para o xine utilizando aalib (ASCII Art Library).
 
 %package caca
-Summary:	XINE - Color AsCii Art player
-Summary(pl.UTF-8):	XINE - odtwarzacz kolorowy Ascii Art
+Summary:	XINE - Color ASCII Art player
+Summary(pl.UTF-8):	XINE - odtwarzacz kolorowy ASCII Art
 Group:		Applications/Multimedia
 Requires:	xine-lib >= %{xine_ver}
 Requires:	xine-output-video-caca >= %{xine_ver}
 Requires:	xine-plugin-audio >= %{xine_ver}
 
 %description caca
-Video player using Colour AsCii Art library.
+Video player using Colour ASCII Art library.
 
 %description caca -l pl.UTF-8
 Odtwarzacz filmów używający biblioteki CACA.
