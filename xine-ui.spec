@@ -51,6 +51,7 @@ BuildRequires:	readline-devel >= 4.2a
 BuildRequires:	rpmbuild(macros) >= 1.213
 BuildRequires:	xine-lib-devel >= %{xine_ver}
 BuildRequires:	xorg-lib-libXft-devel
+BuildRequires:	xorg-lib-libXt-devel
 %{!?with_nvtv:BuildConflicts:	libnvtvsimple-devel}
 Requires:	xine-lib >= %{xine_ver}
 Requires:	xine-plugin-audio >= %{xine_ver}
