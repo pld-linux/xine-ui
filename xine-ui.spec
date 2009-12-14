@@ -30,6 +30,7 @@ Patch0:		%{name}-ncurses.patch
 Patch1:		%{name}-nolibs.patch
 Patch2:		%{name}-pl.po.patch
 Patch3:		%{name}-curl.patch
+Patch4:		install_once.patch
 #PatchX:		%{name}-vdr.patch
 URL:		http://xine.sourceforge.net/
 %{?with_directfb:BuildRequires:	DirectFB-devel >= 0.9.10}
@@ -146,6 +147,7 @@ Odtwarzacz filmów używający biblioteki DirectFB.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 #%{?with_vdr:%patchX -p1}
 
 rm -f po/stamp-po
