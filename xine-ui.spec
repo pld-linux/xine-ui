@@ -42,7 +42,7 @@ BuildRequires:	curl-devel >= 7.10.2
 BuildRequires:	gettext-devel
 %{?with_caca:BuildRequires:	libcaca-devel >= 0.9}
 %{?with_nvtv:BuildRequires:	libnvtvsimple-devel >= 0.4.6}
-BuildRequires:	libpng-devel
+BuildRequires:	libpng-devel	>= 2:1.4.0
 BuildRequires:	libtool
 %{?with_lirc:BuildRequires:	lirc-devel}
 BuildRequires:	ncurses-devel
@@ -150,6 +150,8 @@ Odtwarzacz filmów używający biblioteki DirectFB.
 %patch3 -p1
 %patch4 -p1
 #%{?with_vdr:%patchX -p1}
+
+%{__sed} -i -e 's/return (int)png_check_sig(buf, 8);/return (int)!png_sig_cmp(buf, 0, 8);/g' src/xitk/Imlib-light/load.c
 
 rm -f po/stamp-po
 
