@@ -5,7 +5,7 @@
 %bcond_without	lirc		# without lirc support
 %bcond_without	nvtv		# without nvtv support
 %bcond_with	directfb	# with dfbxine UI [disabled in sources at the moment]
-%bcond_with	vdr		# with vdr support
+%bcond_with	vdr		# with vdr special keys support
 #
 %ifnarch alpha arm %{ix86} ia64 sh %{x8664}
 %undefine	with_nvtv
@@ -17,22 +17,21 @@ Summary(pl.UTF-8):	Odtwarzacz video
 Summary(pt_BR.UTF-8):	Xine, um player de video
 Summary(zh_CN.UTF-8):	一个免费的视频播放器(界面)
 Name:		xine-ui
-Version:	0.99.5
-Release:	4
-License:	GPL
+Version:	0.99.6
+Release:	1
+License:	GPL v2+
 Group:		X11/Applications/Multimedia
-Source0:	http://dl.sourceforge.net/xine/%{name}-%{version}.tar.gz
-# Source0-md5:	e643cd1fcad4d98a5ae4eb877ce5087b
+Source0:	http://downloads.sourceforge.net/xine/%{name}-%{version}.tar.xz
+# Source0-md5:	d468b4e7fe39ff19888261e1da9be914
 Source1:	xine.desktop
-Source2:	xine.png
-Source3:	xine_logo.png
+#Source2:	xine.png
+Source2:	xine_logo.png
 Patch0:		%{name}-ncurses.patch
 Patch1:		%{name}-nolibs.patch
 Patch2:		%{name}-pl.po.patch
 Patch3:		%{name}-curl.patch
-Patch4:		install_once.patch
-#PatchX:		%{name}-vdr.patch
-URL:		http://xine.sourceforge.net/
+Patch4:		%{name}-lirc.patch
+URL:		http://www.xine-project.org/
 %{?with_directfb:BuildRequires:	DirectFB-devel >= 0.9.10}
 %{?with_aalib:BuildRequires:	aalib-devel >= 1.2.0}
 BuildRequires:	autoconf >= 2.53
@@ -40,7 +39,7 @@ BuildRequires:	automake >= 1:1.8.1
 BuildRequires:	bison
 BuildRequires:	curl-devel >= 7.10.2
 BuildRequires:	gettext-devel
-%{?with_caca:BuildRequires:	libcaca-devel >= 0.9}
+%{?with_caca:BuildRequires:	libcaca-devel >= 0.99}
 %{?with_nvtv:BuildRequires:	libnvtvsimple-devel >= 0.4.6}
 BuildRequires:	libpng-devel	>= 2:1.4.0
 BuildRequires:	libtool
@@ -49,10 +48,17 @@ BuildRequires:	ncurses-devel
 BuildRequires:	pkgconfig
 BuildRequires:	readline-devel >= 4.2a
 BuildRequires:	rpmbuild(macros) >= 1.213
+BuildRequires:	tar >= 1:1.24
 BuildRequires:	xine-lib-devel >= %{xine_ver}
+BuildRequires:	xorg-lib-libX11-devel
+BuildRequires:	xorg-lib-libXext-devel
 BuildRequires:	xorg-lib-libXft-devel
+BuildRequires:	xorg-lib-libXinerama-devel
 BuildRequires:	xorg-lib-libXt-devel
-%{!?with_nvtv:BuildConflicts:	libnvtvsimple-devel}
+BuildRequires:	xorg-lib-libXtst-devel
+BuildRequires:	xorg-lib-libXv-devel
+BuildRequires:	xorg-lib-libXxf86vm-devel
+BuildRequires:	xz
 Requires:	xine-lib >= %{xine_ver}
 Requires:	xine-plugin-audio >= %{xine_ver}
 Obsoletes:	xine
@@ -144,16 +150,13 @@ Odtwarzacz filmów używający biblioteki DirectFB.
 
 %prep
 %setup -q
-%patch0 -p0
+%patch0 -p1
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
-#%{?with_vdr:%patchX -p1}
 
-%{__sed} -i -e 's/return (int)png_check_sig(buf, 8);/return (int)!png_sig_cmp(buf, 0, 8);/g' src/xitk/Imlib-light/load.c
-
-rm -f po/stamp-po
+%{__rm} po/stamp-po
 
 %build
 %{__libtoolize}
@@ -162,11 +165,10 @@ rm -f po/stamp-po
 %{__automake}
 %{__autoheader}
 %configure \
-	--with-ncurses \
-%{!?with_lirc:	--disable-lirc} \
-%{?with_lirc:	--enable-lirc} \
-%{?with_vdr:	--enable-vdr-keys} \
-	--with%{!?with_aalib:out}-aalib
+	%{!?with_lirc:--disable-lirc} \
+	%{!?with_nvtv:--disable-nvtvsimple} \
+	%{?with_vdr:--enable-vdr-keys} \
+	%{!?with_aalib:--without-aalib}
 
 %{__make}
 
@@ -179,11 +181,10 @@ install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir},%{_datadir}/xine/skins}
 	docdir=$RPM_BUILD_ROOT%{_datadir}/doc/xine
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
-install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
-install %{SOURCE3} $RPM_BUILD_ROOT%{_datadir}/xine/skins
+install %{SOURCE2} $RPM_BUILD_ROOT%{_datadir}/xine/skins
 
 cp src/xitk/xine-toolkit/README doc/README.xitk
-rm -rf $RPM_BUILD_ROOT%{_docdir}/{xine-ui,xitk}
+%{__rm} -r $RPM_BUILD_ROOT%{_docdir}/{xine-ui,xitk}
 
 %find_lang %{name} --all-name
 
@@ -192,8 +193,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc doc/{README_en,README.*} ChangeLog
-%lang(cs) %doc doc/README_cs
+%doc ChangeLog doc/{README.config_en,README.en.*,README.xitk}
+%lang(cs) %doc doc/{README.cs.*,README_cs}
 %lang(de) %doc doc/README_de
 %lang(es) %doc doc/README_es
 %lang(fi) %doc doc/README_fi
@@ -215,8 +216,10 @@ rm -rf $RPM_BUILD_ROOT
 %lang(es) %{_mandir}/es/man1/xine*.1*
 %lang(fr) %{_mandir}/fr/man1/xine*.1*
 %lang(pl) %{_mandir}/pl/man1/xine*.1*
+%{_datadir}/mime/packages/xine-ui.xml
 %{_desktopdir}/xine.desktop
-%{_pixmapsdir}/*
+%{_iconsdir}/hicolor/*/apps/xine.png
+%{_pixmapsdir}/xine.xpm
 
 %if %{with aalib}
 %files aa
@@ -224,6 +227,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/aaxine
 %{_mandir}/man1/aaxine.1*
 %lang(de) %{_mandir}/de/man1/aaxine.1*
+%lang(es) %{_mandir}/es/man1/aaxine.1*
 %lang(pl) %{_mandir}/pl/man1/aaxine.1*
 %endif
 

@@ -1,11 +1,11 @@
---- configure.ac	2007-05-04 02:35:18.755421561 +0200
-+++ configure.ac-new	2007-05-04 02:40:20.610440809 +0200
-@@ -304,7 +304,7 @@
-    AS_HELP_STRING([--without-ncurses], [Turn off ncurses support.]))
- 
- if test "x$with_ncurses" != "xno"; then
--  AC_CHECK_HEADERS(curses.h)
-+  AC_CHECK_HEADERS(ncurses/ncurses.h)
-   AC_CHECK_LIB(ncurses, cbreak,
-                AC_DEFINE(HAVE_NCURSES,,[Define this if you have ncurses installed])
-                ac_have_ncurses="yes"
+--- xine-ui-0.99.6/m4/readline.m4.orig	2009-12-19 00:14:27.000000000 +0100
++++ xine-ui-0.99.6/m4/readline.m4	2011-02-20 07:02:26.886967526 +0100
+@@ -63,7 +63,7 @@
+       if test "$LIBS" = ''; then
+ 	LIBS=''
+ 	LDFLAGS="$READLINE_LDFLAGS_TEMP"
+-        AC_CHECK_LIB([ncurses], [cbreak])
++        AC_SEARCH_LIBS([cbreak], [tinfow ncursesw tinfo ncurses])
+         if test "$LIBS" = ''; then
+ 	  AC_MSG_NOTICE([libreadline is not linked against libncurses, and I can't find it - disabling])
+ 	  have_readline=no
