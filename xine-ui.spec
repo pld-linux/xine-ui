@@ -18,7 +18,7 @@ Summary(pt_BR.UTF-8):	Xine, um player de video
 Summary(zh_CN.UTF-8):	一个免费的视频播放器(界面)
 Name:		xine-ui
 Version:	0.99.6
-Release:	2
+Release:	3
 License:	GPL v2+
 Group:		X11/Applications/Multimedia
 Source0:	http://downloads.sourceforge.net/xine/%{name}-%{version}.tar.xz
@@ -31,6 +31,7 @@ Patch1:		%{name}-nolibs.patch
 Patch2:		%{name}-pl.po.patch
 Patch3:		%{name}-curl.patch
 Patch4:		%{name}-lirc.patch
+Patch5:		%{name}-libpng15.patch
 URL:		http://www.xine-project.org/
 %{?with_directfb:BuildRequires:	DirectFB-devel >= 0.9.10}
 %{?with_aalib:BuildRequires:	aalib-devel >= 1.2.0}
@@ -155,6 +156,7 @@ Odtwarzacz filmów używający biblioteki DirectFB.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 %{__rm} po/stamp-po
 
