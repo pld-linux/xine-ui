@@ -18,7 +18,7 @@ Summary(pt_BR.UTF-8):	Xine, um player de video
 Summary(zh_CN.UTF-8):	一个免费的视频播放器(界面)
 Name:		xine-ui
 Version:	0.99.6
-Release:	6
+Release:	7
 License:	GPL v2+
 Group:		X11/Applications/Multimedia
 Source0:	http://downloads.sourceforge.net/xine/%{name}-%{version}.tar.xz
@@ -209,7 +209,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/xine-bugreport
 %attr(755,root,root) %{_bindir}/xine-check
 %attr(755,root,root) %{_bindir}/xine-remote
-%{_datadir}/xine
+%dir %{_datadir}/xine
 %{_datadir}/xine/desktop
 %{_datadir}/xine/oxine
 %{_datadir}/xine/skins
