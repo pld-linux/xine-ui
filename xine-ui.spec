@@ -39,7 +39,7 @@ BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1:1.8.1
 BuildRequires:	bison
 BuildRequires:	curl-devel >= 7.10.2
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 %{?with_caca:BuildRequires:	libcaca-devel >= 0.99}
 %{?with_nvtv:BuildRequires:	libnvtvsimple-devel >= 0.4.6}
 BuildRequires:	libpng-devel	>= 2:1.4.0
