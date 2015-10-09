@@ -17,12 +17,12 @@ Summary(pl.UTF-8):	Odtwarzacz video
 Summary(pt_BR.UTF-8):	Xine, um player de video
 Summary(zh_CN.UTF-8):	一个免费的视频播放器(界面)
 Name:		xine-ui
-Version:	0.99.6
-Release:	7
+Version:	0.99.9
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Multimedia
 Source0:	http://downloads.sourceforge.net/xine/%{name}-%{version}.tar.xz
-# Source0-md5:	d468b4e7fe39ff19888261e1da9be914
+# Source0-md5:	a6d00381b5c8b7aec1a7a3fbf84f01ce
 Source1:	xine.desktop
 #Source2:	xine.png
 Source2:	xine_logo.png
@@ -30,20 +30,17 @@ Patch0:		%{name}-ncurses.patch
 Patch1:		%{name}-nolibs.patch
 Patch2:		%{name}-pl.po.patch
 Patch3:		%{name}-curl.patch
-Patch4:		%{name}-lirc.patch
-Patch5:		%{name}-libpng15.patch
 URL:		http://www.xine-project.org/
 %{?with_directfb:BuildRequires:	DirectFB-devel >= 0.9.10}
 %{?with_aalib:BuildRequires:	aalib-devel >= 1.2.0}
-BuildRequires:	autoconf >= 2.53
+BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.8.1
 BuildRequires:	bison
 BuildRequires:	curl-devel >= 7.10.2
-BuildRequires:	gettext-tools
+BuildRequires:	gettext-tools >= 0.18.3
 %{?with_caca:BuildRequires:	libcaca-devel >= 0.99}
 %{?with_nvtv:BuildRequires:	libnvtvsimple-devel >= 0.4.6}
 BuildRequires:	libpng-devel	>= 2:1.4.0
-BuildRequires:	libtool
 %{?with_lirc:BuildRequires:	lirc-devel}
 BuildRequires:	ncurses-devel
 BuildRequires:	pkgconfig
@@ -52,6 +49,7 @@ BuildRequires:	rpmbuild(macros) >= 1.213
 BuildRequires:	tar >= 1:1.24
 BuildRequires:	xine-lib-devel >= %{xine_ver}
 BuildRequires:	xorg-lib-libX11-devel
+BuildRequires:	xorg-lib-libXScrnSaver-devel
 BuildRequires:	xorg-lib-libXext-devel
 BuildRequires:	xorg-lib-libXft-devel
 BuildRequires:	xorg-lib-libXinerama-devel
@@ -155,13 +153,10 @@ Odtwarzacz filmów używający biblioteki DirectFB.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
-%patch5 -p1
 
 %{__rm} po/stamp-po
 
 %build
-%{__libtoolize}
 %{__aclocal} -I m4
 %{__autoconf}
 %{__automake}
@@ -210,7 +205,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/xine-check
 %attr(755,root,root) %{_bindir}/xine-remote
 %dir %{_datadir}/xine
-%{_datadir}/xine/desktop
 %{_datadir}/xine/oxine
 %{_datadir}/xine/skins
 %{_datadir}/xine/visuals
