@@ -1,0 +1,11 @@
+--- xine-ui-0.99.14/src/xitk/tvout.c.orig	2023-01-07 20:28:52.000000000 +0100
++++ xine-ui-0.99.14/src/xitk/tvout.c	2024-04-17 06:12:56.650735908 +0200
+@@ -179,7 +179,7 @@ static void nvtv_tvout_deinit(void *data
+ }
+ 
+ static xui_tvout_t *nvtv_backend (gGui_t *gui) {
+-  xui_tvout_t *tvout = malloc (sizeof (*tvout);
++  xui_tvout_t *tvout = malloc (sizeof (*tvout));
+ 
+   if (!tvout)
+     return NULL;

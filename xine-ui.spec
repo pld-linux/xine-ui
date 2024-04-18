@@ -1,13 +1,13 @@
 #
 # Conditional build:
-%bcond_without	aalib		# without aaxine UI
-%bcond_with	caca		# without cacaxine UI
-%bcond_without	lirc		# without lirc support
-%bcond_without	nvtv		# without nvtv support
-%bcond_with	directfb	# with dfbxine UI [disabled in sources at the moment]
-%bcond_with	vdr		# with vdr special keys support
+%bcond_without	aalib		# aaxine UI
+%bcond_with	caca		# cacaxine UI
+%bcond_without	lirc		# lirc support
+%bcond_without	nvtv		# nvtv support
+%bcond_with	directfb	# dfbxine UI [disabled in sources at the moment]
+%bcond_with	vdr		# vdr special keys support
 #
-%ifnarch alpha arm %{ix86} ia64 sh %{x8664}
+%ifnarch alpha %{arm} %{ix86} ia64 sh %{x8664}
 %undefine	with_nvtv
 %endif
 %define	xine_ver 1:1.1.0
@@ -17,19 +17,18 @@ Summary(pl.UTF-8):	Odtwarzacz video
 Summary(pt_BR.UTF-8):	Xine, um player de video
 Summary(zh_CN.UTF-8):	一个免费的视频播放器(界面)
 Name:		xine-ui
-Version:	0.99.9
-Release:	5
+Version:	0.99.14
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Multimedia
-Source0:	http://downloads.sourceforge.net/xine/%{name}-%{version}.tar.xz
-# Source0-md5:	a6d00381b5c8b7aec1a7a3fbf84f01ce
-Source1:	xine.desktop
-#Source2:	xine.png
-Source2:	xine_logo.png
+Source0:	https://downloads.sourceforge.net/xine/%{name}-%{version}.tar.xz
+# Source0-md5:	86a4db9050405a91fcc33b7ad85274f5
+Source1:	xine_logo.png
 Patch0:		%{name}-ncurses.patch
 Patch1:		%{name}-nolibs.patch
 Patch2:		%{name}-pl.po.patch
-Patch3:		%{name}-curl.patch
+Patch3:		%{name}-build.patch
+Patch4:		%{name}-desktop.patch
 URL:		http://www.xine-project.org/
 %{?with_directfb:BuildRequires:	DirectFB-devel >= 0.9.10}
 %{?with_aalib:BuildRequires:	aalib-devel >= 1.2.0}
@@ -37,9 +36,10 @@ BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.8.1
 BuildRequires:	bison
 BuildRequires:	curl-devel >= 7.10.2
-BuildRequires:	gettext-tools >= 0.18.3
-%{?with_caca:BuildRequires:	libcaca-devel >= 0.99}
+BuildRequires:	gettext-tools >= 0.19.8
+%{?with_caca:BuildRequires:	libcaca-devel >= 0.99-0.beta19}
 %{?with_nvtv:BuildRequires:	libnvtvsimple-devel >= 0.4.6}
+BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel	>= 2:1.4.0
 %{?with_lirc:BuildRequires:	lirc-devel}
 BuildRequires:	ncurses-devel
@@ -60,7 +60,7 @@ BuildRequires:	xorg-lib-libXxf86vm-devel
 BuildRequires:	xz
 Requires:	xine-lib >= %{xine_ver}
 Requires:	xine-plugin-audio >= %{xine_ver}
-Obsoletes:	xine
+Obsoletes:	xine < 1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -153,33 +153,34 @@ Odtwarzacz filmów używający biblioteki DirectFB.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %{__rm} po/stamp-po
 
 %build
 %{__aclocal} -I m4
 %{__autoconf}
-%{__automake}
 %{__autoheader}
+%{__automake}
 %configure \
-	%{!?with_caca:--without-caca} \
 	%{!?with_lirc:--disable-lirc} \
 	%{!?with_nvtv:--disable-nvtvsimple} \
+	--disable-silent-rules \
 	%{?with_vdr:--enable-vdr-keys} \
-	%{!?with_aalib:--without-aalib}
+	%{!?with_aalib:--without-aalib} \
+	%{!?with_caca:--without-caca}
 
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir},%{_datadir}/xine/skins}
+install -d $RPM_BUILD_ROOT%{_datadir}/xine/skins
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	docdir=$RPM_BUILD_ROOT%{_datadir}/doc/xine
 
-install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
-install %{SOURCE2} $RPM_BUILD_ROOT%{_datadir}/xine/skins
+install %{SOURCE1} $RPM_BUILD_ROOT%{_datadir}/xine/skins
 
 cp src/xitk/xine-toolkit/README doc/README.xitk
 %{__rm} -r $RPM_BUILD_ROOT%{_docdir}/{xine-ui,xitk}
@@ -213,11 +214,14 @@ rm -rf $RPM_BUILD_ROOT
 %lang(de) %{_mandir}/de/man1/xine*.1*
 %lang(es) %{_mandir}/es/man1/xine*.1*
 %lang(fr) %{_mandir}/fr/man1/xine*.1*
+%lang(nl) %{_mandir}/nl/man1/xine*.1*
 %lang(pl) %{_mandir}/pl/man1/xine*.1*
 %{_datadir}/mime/packages/xine-ui.xml
 %{_desktopdir}/xine.desktop
 %{_iconsdir}/hicolor/*/apps/xine.png
+%{_iconsdir}/hicolor/scalable/apps/xine.svgz
 %{_pixmapsdir}/xine.xpm
+%{_pixmapsdir}/xine_32.xpm
 
 %if %{with aalib}
 %files aa
@@ -226,6 +230,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/aaxine.1*
 %lang(de) %{_mandir}/de/man1/aaxine.1*
 %lang(es) %{_mandir}/es/man1/aaxine.1*
+%lang(nl) %{_mandir}/nl/man1/aaxine.1*
 %lang(pl) %{_mandir}/pl/man1/aaxine.1*
 %endif
 

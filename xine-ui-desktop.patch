@@ -1,0 +1,17 @@
+--- xine-ui-0.99.14/misc/desktops/xine.desktop.in.orig	2023-01-07 20:28:52.000000000 +0100
++++ xine-ui-0.99.14/misc/desktops/xine.desktop.in	2024-04-17 20:05:05.872616177 +0200
+@@ -1,10 +1,11 @@
+ [Desktop Entry]
+-Encoding=UTF-8
+ Name=xine
++Name[pl]=Odtwarzacz xine
+ Comment=Video Player
++Comment[pl]=Odtwarzacz filmów
+ Exec=xine %U
+ Icon=xine
+ Terminal=false
+ Type=Application
+-Categories=Application;AudioVideo;Player;
++Categories=AudioVideo;Player;
+ MimeType=
+\ No newline at end of file
